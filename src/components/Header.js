@@ -8,33 +8,29 @@ class Header extends Component {
     render() {
         const userId = localStorage.getItem(GC_USER_ID)
         return (
-            <div>
-                <div>
-                    <div>Welcome to Gaming All Time, A place to store all the records!</div>
-                    <Link to='/' className='ml1 no-underline black'>new</Link>
+            <header>
+                <div className="headTitle">
+                    <div className="headTitleText">Welcome to Gaming All Time, A place to store all the records!</div>
                     {
-                        userId &&
-                        <div>
-                            <Link to='/create'>submit</Link>
-                        </div>
+                        //Turnery if userID logout, else login.
+                        userId ?
+                        // This is a function, please don't be scared by it. I wish I knew how
+                        // to move it out and make it class level rather then inline.
+                        <div className="headLogout" onClick={() => {
+                            localStorage.removeItem(GC_USER_ID)
+                            localStorage.removeItem(GC_AUTH_TOKEN)
+                            this.props.history.push(`/`)
+                        }}>logout</div>
+                        :
+                        <Link className="headLogin" to='/login'>login</Link>
                     }
                 </div>
-                <div>
-                {
-                    //Turnery if userID logout, else login.
-                    userId ?
-                    // This is a function, please don't be scared by it. I wish I knew how
-                    // to move it out and make it class level rather then inline.
-                    <div onClick={() => {
-                        localStorage.removeItem(GC_USER_ID)
-                        localStorage.removeItem(GC_AUTH_TOKEN)
-                        this.props.history.push(`/`)
-                    }}>logout</div>
-                    :
-                    <Link to='/login' className='ml1 no-underline black'>login</Link>
-            }
-            </div>
-        </div>
+                <div className="headNavBar">
+                    <Link to='/' className="navLink">Home</Link>
+                    {userId && <Link to='/create' className="navLink">submit</Link>}
+                    {userId && <Link to='/profile' className="navLink">profile</Link>}
+                </div>
+            </header>
         )
     }
 

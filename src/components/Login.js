@@ -39,18 +39,18 @@ class Login extends Component {
                         type='password'
                         placeholder='Choose a safe password'
                     />
-                    </div>
-                    <div>
-                        <div
-                            onClick={() => this._confirm()}
-                        >
-                            {this.state.login ? 'login' : 'create account' }
-                        </div>
-                        <div
-                            onClick={() => this.setState({ login: !this.state.login })}
-                        >
-                        {this.state.login ? 'need to create an account?' : 'already have an account?'}
-                    </div>
+                </div>
+                <div>
+                    <button
+                        onClick={() => this._confirm()}
+                    >
+                        {this.state.login ? 'login' : 'create account' }
+                    </button>
+                    <button
+                        onClick={() => this.setState({ login: !this.state.login })}
+                    >
+                    {this.state.login ? 'need to create an account?' : 'already have an account?'}
+                    </button>
                 </div>
             </div>
         )

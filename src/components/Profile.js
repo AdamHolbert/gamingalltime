@@ -8,7 +8,7 @@ class Profile extends React.Component {
         return(
             <div>
                 <div>Profile</div>
-                <Link to='/create' className='ml1 no-underline black'>lok</Link>
+                <Link to='/create'>lok</Link>
             </div>
         )
     }

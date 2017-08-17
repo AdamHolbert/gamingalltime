@@ -1,0 +1,49 @@
+header {
+    background-color: #d88;
+    color: white;
+    padding: 4px;
+}
+
+body {
+    background: #4B96B2;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.headTitle{
+    margin: 5px;
+    background-color: #d5d;
+}
+
+.headTitleText {
+    font-size: 40px;
+}
+
+.headLogin {
+    float:right;
+    padding: 5px;
+    background-color: #5d5;
+    border: solid red 2px;
+}
+
+.headLogout {
+    float:right;
+    padding: 5px;
+    background-color: #d55;
+    border: solid red 2px;
+}
+
+.headNavBar {
+    font-size: 15px;
+    text-align: left;
+    overflow: auto;
+    display: inline-block;
+    background-color: #5dd;
+}
+
+.navLink {
+    display: inline-block;
+    padding: 5px;
+    margin: 10px;
+    background-color: #5d5;
+    border: solid red 2px;
+}
