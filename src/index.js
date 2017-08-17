@@ -12,6 +12,9 @@ const networkInterface = createNetworkInterface({
     uri: 'https://api.graph.cool/simple/v1/cj6eoa0g34syj0121t2ray1oa'
 })
 
+
+// This is for sending the authorization token to the server on every request
+// http://dev.apollodata.com/react/auth.html#Header if you want to read more
 networkInterface.use([{
   applyMiddleware(req, next) {
     if (!req.options.headers) {
