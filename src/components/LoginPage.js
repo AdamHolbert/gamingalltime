@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { GC_USER_ID, GC_AUTH_TOKEN } from '../constants'
 import { gql, graphql, compose } from 'react-apollo'
 
-class Login extends Component {
+class LoginPage extends Component {
 
     state = {
         login: true, // switch between Login and SignUp
@@ -133,4 +133,4 @@ const SIGNIN_USER_MUTATION = gql`
 export default compose(
   graphql(CREATE_USER_MUTATION, { name: 'createUserMutation' }),
   graphql(SIGNIN_USER_MUTATION, { name: 'signinUserMutation' })
-)(Login)
+)(LoginPage)
