@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 import { graphql, gql } from 'react-apollo'
 import { GC_USER_ID } from '../constants'
 
+
+
+
+// This class is being kept here as an example of how to send data to the server
+// It also show how to hide things from the user if they aren't logged in
+
 class CreateLink extends Component {
 
     state = {
@@ -12,7 +18,7 @@ class CreateLink extends Component {
     render() {
         return (
             <div>
-                <div className='flex flex-column mt3'>
+                <div>
                     <input
                         className='mb2'
                         value={this.state.description}
