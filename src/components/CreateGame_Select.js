@@ -2,17 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 
-class Profile extends React.Component {
+class CreateGame_Select extends React.Component {
     
     render(){
         return(
             <div>
-                <div>Profile</div>
-                <Link to='/create'>lok</Link>
+                <div>Select A Game</div>
             </div>
         )
     }
     
 }
 
-export default Profile
+export default CreateGame_Select

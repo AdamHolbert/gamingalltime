@@ -27,9 +27,14 @@ class Header extends Component {
                 </div>
                 <div className="headNavBar">
                     <Link to='/' className="navLink">Home</Link>
+                    <Link to='/AboutUs' className="navLink">About Us</Link>
+                    {userId && <Link to='/DataScrapeExample' className="navLink">Data Scrape Example</Link>}
                     {userId && <Link to='/create' className="navLink">submit</Link>}
                     {userId && <Link to='/profile' className="navLink">profile</Link>}
-                    <Link to='/AboutUs' className="navLink">AboutUs</Link>
+                    <Link to='/CreateGame' className="navLink">CreateGame</Link>
+                    <Link to='/CreateGame_Create' className="navLink">CreateGame_Create</Link>
+                    <Link to='/CreateGame_Select' className="navLink">CreateGame_Select</Link>
+                    <Link to='/AboutUs' className="navLink">About Us</Link>
                 </div>
             </header>
         )

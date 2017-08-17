@@ -14,8 +14,9 @@ body {
     background-color: #d5d;
 }
 
+
 .headTitleText {
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .headLogin {
@@ -47,3 +48,4 @@ body {
     background-color: #5d5;
     border: solid red 2px;
 }
+
