@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-
-class Profile extends React.Component {
+class ProfilePage extends React.Component {
     
     render(){
         return(
@@ -11,8 +10,7 @@ class Profile extends React.Component {
                 <Link to='/create'>lok</Link>
             </div>
         )
-    }
-    
+    }   
 }
 
-export default Profile
+export default ProfilePage
