@@ -6,15 +6,31 @@ import registerServiceWorker from './registerServiceWorker';
 import './styles/index.css';
 import { GC_AUTH_TOKEN } from './constants'
 import { ApolloProvider, createNetworkInterface, ApolloClient } from 'react-apollo'
+import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws'
 
+
+//
+// All network stuff, don't touch
+//
+    // This is for sending the authorization token to the server on every request
+    // http://dev.apollodata.com/react/auth.html#Header if you want to read more
 
 const networkInterface = createNetworkInterface({
-    uri: 'https://api.graph.cool/simple/v1/cj6eoa0g34syj0121t2ray1oa'
+  uri: 'https://api.graph.cool/simple/v1/cj6eoa0g34syj0121t2ray1oa'
 })
 
+const wsClient = new SubscriptionClient('wss://subscriptions.graph.cool/v1/cj6eoa0g34syj0121t2ray1oa', {
+  reconnect: true,
+  connectionParams: {
+     authToken: localStorage.getItem(GC_AUTH_TOKEN),
+  }
+})
 
-// This is for sending the authorization token to the server on every request
-// http://dev.apollodata.com/react/auth.html#Header if you want to read more
+const networkInterfaceWithSubscriptions = addGraphQLSubscriptions(
+  networkInterface,
+  wsClient
+)
+
 networkInterface.use([{
   applyMiddleware(req, next) {
     if (!req.options.headers) {
@@ -26,10 +42,13 @@ networkInterface.use([{
   }
 }])
 
-
 const client = new ApolloClient({
-    networkInterface
+  networkInterface: networkInterfaceWithSubscriptions
 })
+
+//
+//
+//
 
 
 ReactDOM.render(
