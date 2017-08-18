@@ -7,17 +7,17 @@ class PeopleInfo extends React.Component{
     const people = [{
       id: '1',
       name: 'Adam Holbert',    
-      description: 'The Coolest GraphQL Backend 😎',
+      email : 'coolDude@chilltime.com '
       
     }, {
-      id: '2',
-      name: 'Adam Holbert',
-      description: 'The Best GraphQL Client',
+     id: '2',
+      name: 'Christian Moore',
+      email: 'CMoo@gmail.com'
       
     }, {
       id: '3',
       name: 'Dylan Shoupe',
-      description: 'The bestest create game page and some routing ☃ ☃ ☃',
+      email: 'The bestest create game page and some routing ☃ ☃ ☃'
       
     }]
          return(

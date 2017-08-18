@@ -10,6 +10,7 @@ class HomePage extends React.Component {
                 <div><h1>Welcome to the home page!</h1></div>
                 {userId ?
                     <div> 
+                        <h3>User Info</h3>
                         <PeopleInfo/>
                     </div>
                         :

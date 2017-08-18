@@ -4,10 +4,10 @@ class People extends React.Component {
 
   render() {
     return (
-        
+        //😎
       <div>
         <div>
-        <div>{this.props.link.description} ({this.props.link.name})</div>
+        <div>{this.props.link.name} {this.props.link.email} 😎</div>
         </div>
       </div>
     )
@@ -16,5 +16,6 @@ class People extends React.Component {
   
 
 }
+
 
 export default People
