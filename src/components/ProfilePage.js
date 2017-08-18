@@ -7,7 +7,7 @@ class ProfilePage extends React.Component {
     return (
       <div>
         <div>Profile</div>
-        <Link to="/create">lok</Link>
+        <Link to="/create"></Link>
         <div id="pageContent">
           <div>
             <header />
@@ -24,12 +24,7 @@ class ProfilePage extends React.Component {
             <button onClick={this.setUserPassword()}>Change Password</button>
 
             <h2>Bio:</h2>
-            <p id="userBio">
-              {this.getUserBio()}
-            </p>
-            <button id="btnChangeBio" onClick={this.setUserBio()}>
-              Update Bio
-            </button>
+              {this.props.getUserBio()}
 
             <h2>Friend List:</h2>
             <p id="userFriends">
@@ -48,6 +43,10 @@ class ProfilePage extends React.Component {
       </div>
     );
   }
+
+
+
+
 
   // *** GET DATA ***
 
@@ -75,9 +74,14 @@ class ProfilePage extends React.Component {
   }
 
   getUserBio() {
-    //Query to fetch user's bio only
-
-    console.log("Fetched user bio");
+    return (
+      <div>
+        <p id="userBio">
+          // Query to fetch user's bio only
+        </p>
+        <button id="btnChangeBio" onClick={this.updateUserBio()}>Update Bio</button>
+      </div>
+    )
   }
 
   // *** SET DATA ***
@@ -86,16 +90,22 @@ class ProfilePage extends React.Component {
     console.log("Manage user's Friend List");
   }
 
+  updateUserBio() {
+    return (
+      <div>
+        <textarea rows="6" cols="70" id="userBio">
+          //Query to fetch user's bio only
+        </textarea>
+        <button id="btnChangeBio" onClick={this.setUserBio()}>Save Bio</button>
+      </div>
+    )
+  }
+
   setUserBio() {
-    //update bio area to text area instead of immutable paragraph
-    <div>
-      <textarea rows="6" cols="70">
-        {this.getUserBio()}
-      </textarea>
-      {/* change the button to onClick=saveUserBio and button text to "Save" */}
-      {/* <button id="btnChangeBio" onClick={this.updateUserBio()}>Update Bio</button> */}
-    </div>;
-    console.log("Update user's Bio");
+    // Save new bio to DB
+    return (
+      getUserBio()
+    )
   }
 
   setUserPassword() {
