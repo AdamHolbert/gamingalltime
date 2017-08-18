@@ -18,22 +18,24 @@ class LoginPage extends Component {
         return (
             <div>
                 <h4>{this.state.login ? 'Login' : 'Sign Up'}</h4>
-                <div>
-                    {!this.state.login &&
-                        <input
+                <div  className="loginArea">
+                    {!this.state.login && 
+                        <input className="nameArea"
                             value={this.state.name}
                             onChange={(e) => this.setState({ name: e.target.value })}
                             type='text'
                             placeholder='Your name'
                         />
                     }
-                    <input
+                            Email
+                    <input className="emailArea"
                         value={this.state.email}
                         onChange={(e) => this.setState({ email: e.target.value })}
                         type='text'
                         placeholder='Your email address'
                     />
-                    <input
+                            Password
+                    <input className="passwordArea"
                         value={this.state.password}
                         onChange={(e) => this.setState({ password: e.target.value })}
                         type='password'
@@ -41,12 +43,12 @@ class LoginPage extends Component {
                     />
                 </div>
                 <div>
-                    <button
+                    <button className="login_create"
                         onClick={() => this._confirm()}
                     >
                         {this.state.login ? 'login' : 'create account' }
                     </button>
-                    <button
+                    <button className="accountBtn"
                         onClick={() => this.setState({ login: !this.state.login })}
                     >
                     {this.state.login ? 'need to create an account?' : 'already have an account?'}

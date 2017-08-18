@@ -10,7 +10,7 @@ import HomePage from './HomePage';
 import AboutUsPage from './AboutUsPage';
 import UnknownPage from './UnknownPage';
 import DataScrapeExample from './DataScrapeExample';
-import AboutUs from './AboutUs';
+import AboutUs from './AboutUsPage';
 import { Switch, Route } from 'react-router-dom'
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
                 <Header />
                 <div>
                     <Switch>
-                        <Route exact path='/AboutUs' component={AboutUs}/>
+                        <Route exact path='/AboutUsPage' component={AboutUs}/>
                         <Route exact path='/CreateGame' component={CreateGame}/>
                         <Route exact path='/CreateGame_Create' component={CreateGame_Create}/>
                         <Route exact path='/CreateGame_Select' component={CreateGame_Select}/>
