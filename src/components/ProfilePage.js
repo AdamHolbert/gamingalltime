@@ -24,7 +24,7 @@ class ProfilePage extends React.Component {
             <button onClick={this.setUserPassword()}>Change Password</button>
 
             <h2>Bio:</h2>
-              {this.props.getUserBio()}
+              
 
             <h2>Friend List:</h2>
             <p id="userFriends">
