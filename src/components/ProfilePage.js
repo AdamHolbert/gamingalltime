@@ -104,7 +104,7 @@ class ProfilePage extends React.Component {
   setUserBio() {
     // Save new bio to DB
     return (
-      getUserBio()
+      this.getUserBio()
     )
   }
 
