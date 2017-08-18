@@ -10,12 +10,18 @@ class HomePage extends React.Component {
                 <div><h1>Welcome to the home page!</h1></div>
                 {userId ?
                     <div> 
-                        <h3>User Info</h3>
+                        <h2>Welcome User!</h2>
+                        <h3>All Registered Users</h3>
                         <PeopleInfo/>
                     </div>
                         :
                     <div>
-                        You are currently not logged in. Please log in to gain all the functions this website has to offer.
+                    <div>
+                        <h2>Don't Have An Account? Well Create One Today!! </h2>
+                        <h3>All Registered Users</h3>
+                        <PeopleInfo/>
+                    </div>
+                       
                     </div>
                 }
             </div>
