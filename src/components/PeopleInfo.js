@@ -40,8 +40,6 @@ const processUser = (user) => {
     )
 }
 
-
-
 const ALL_USER_QUERY = gql`
 query allUserQuery($USERID : String){
     allUsers(id: $USERID){
@@ -54,4 +52,4 @@ query allUserQuery($USERID : String){
 
 //alum, 
 
-export default graphql(ALL_USER_QUERY, {name: 'allUserQuery'}, {options: { variables: { USERID: localStorage.getItem(GC_USER_ID).toString() } }}) (PeopleInfo)
+export default graphql(ALL_USER_QUERY, {name: 'allUserQuery'}, {options: { variables: { USERID: localStorage.getItem(GC_USER_ID) } }}) (PeopleInfo)
