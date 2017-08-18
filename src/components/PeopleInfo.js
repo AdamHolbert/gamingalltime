@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import People from './People'
 import { graphql, gql } from 'react-apollo'
+import { GC_USER_ID, GC_AUTH_TOKEN } from '../constants'
 
 class PeopleInfo extends React.Component{
     render() {
-        
+        const userId = localStorage.getItem(GC_USER_ID)
           // 1
         if (this.props.allUserQuery && this.props.allUserQuery.loading) {
             return <div>Loading</div>
@@ -42,12 +43,11 @@ const processUser = (user) => {
 
 const ALL_USER_QUERY = gql`
 query allUserQuery{
-    allUsers{
-        id
-        name
-        email
-        password
-    }
+    allUsers(filter: {id: "{userId}"}){
+    id
+    name
+    email
+  }
 }`
 
 
