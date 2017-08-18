@@ -1,37 +1,51 @@
 import React, { Component } from 'react'
+import { graphql, gql } from 'react-apollo'
 
 class DataScrapeExample extends Component {
 
-  render() {
+    render() {
 
-    const linksToRender = [{
-      id: '1',
-      description: 'The Coolest GraphQL Backend 😎',
-      url: 'https://www.graph.cool'
-    }, {
-      id: '2',
-      description: 'The Best GraphQL Client',
-      url: 'http://dev.apollodata.com/'
-    }]
-
-    var processLink = function(props){
-        return(
+        // 1
+        if (this.props.allUserQuery && this.props.allUserQuery.loading) {
+            return <div>Loading</div>
+        }
+        
+        // 2
+        if (this.props.allUserQuery && this.props.allUserQuery.error) {
+            return <div>Error</div>
+        }
+        
+        // 3
+        const linksToRender = this.props.allUserQuery.allUsers    
+        return (
             <div>
-                <div>props.link.id</div>
-                <br/>
+                {linksToRender.map(user => (
+                    processUser(user)
+                ))}
             </div>
-        );
+        )
     }
-    
-    return (
-      <div>
-        {linksToRender.map(link => (
-            <processLink key={link.id} link={link}/>
-        ))}
-      </div>
-    )
-  }
 
 }
 
-export default DataScrapeExample
+const processUser = (user) => {
+    return(
+        <p>
+            Name: {user.name} <br/>
+            Email: {user.email} <br/>
+            Password: {user.password}
+        </p>
+    )
+}
+
+const ALL_USER_QUERY = gql`
+query allUserQuery{
+    allUsers{
+        id
+        name
+        email
+        password
+    }
+}`
+
+export default graphql(ALL_USER_QUERY, {name: 'allUserQuery'}) (DataScrapeExample)
