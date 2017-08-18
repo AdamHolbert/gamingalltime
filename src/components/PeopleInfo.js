@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import People from './People'
 import { graphql, gql } from 'react-apollo'
 import { GC_USER_ID, GC_AUTH_TOKEN } from '../constants'
 
@@ -41,10 +40,11 @@ const processUser = (user) => {
     )
 }
 
+
+
 const ALL_USER_QUERY = gql`
-query allUserQuery{
-    allUsers(filter: {id: "{userId}"}){
-    id
+query allUserQuery($USERID : String){
+    allUsers(id: $USERID){
     name
     email
   }
@@ -52,6 +52,6 @@ query allUserQuery{
 
 
 
-//alum
+//alum, 
 
-export default graphql(ALL_USER_QUERY, {name: 'allUserQuery'}) (PeopleInfo)
+export default graphql(ALL_USER_QUERY, {name: 'allUserQuery'}, {options: { variables: { USERID: localStorage.getItem(GC_USER_ID).toString() } }}) (PeopleInfo)
