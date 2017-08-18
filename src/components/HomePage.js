@@ -1,6 +1,7 @@
 import React from 'react';
 import { GC_USER_ID, GC_AUTH_TOKEN } from '../constants'
 import PeopleInfo from './PeopleInfo';
+import LoggedOut from './LoggedOut';
 class HomePage extends React.Component {
     
     render(){
@@ -10,11 +11,18 @@ class HomePage extends React.Component {
                 <div><h1>Welcome to the home page!</h1></div>
                 {userId ?
                     <div> 
+                        <h2>Welcome User!</h2>
+                        <h3>All Registered Users</h3>
                         <PeopleInfo/>
                     </div>
                         :
                     <div>
-                        You are currently not logged in. Please log in to gain all the functions this website has to offer.
+                    <div>
+                        <h2>Don't Have An Account? Well Create One Today!! </h2>
+                        <h3>All Registered Users</h3>
+                        <LoggedOut/>
+                    </div>
+                       
                     </div>
                 }
             </div>
