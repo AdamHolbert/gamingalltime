@@ -14,6 +14,13 @@ body {
     background-color: #d5d;
 }
 
+.headTitle h3{
+    margin: 0 0 0 5px;
+}
+
+.headTitle h5{
+    margin: 0 10px 10px 5px;
+}
 
 .headTitleText {
     font-size: 30px;
@@ -47,5 +54,6 @@ body {
     margin: 10px;
     background-color: #5d5;
     border: solid red 2px;
+    text-decoration: none;
 }
 

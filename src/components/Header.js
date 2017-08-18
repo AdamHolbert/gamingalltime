@@ -10,7 +10,7 @@ class Header extends Component {
         return (
             <header>
                 <div className="headTitle">
-                    <div className="headTitleText">Welcome to Gaming All Time, A place to store all the records!</div>
+                    <div className="headTitleText"><h3>Welcome to Gaming All Time</h3><h5>A place to store all the records!</h5></div>
                     {
                         //Turnery if userID logout, else login.
                         userId ?
@@ -27,18 +27,21 @@ class Header extends Component {
                 </div>
                 <div className="headNavBar">
                     <Link to='/' className="navLink">Home</Link>
-                    {userId && <Link to='/DataScrapeExample' className="navLink">Data Scrape Example</Link>}
-                    {userId && <Link to='/create' className="navLink">submit</Link>}
-                    {userId && <Link to='/profile' className="navLink">profile</Link>}
-                    <Link to='/CreateGame' className="navLink">CreateGame</Link>
-                    <Link to='/CreateGame_Create' className="navLink">CreateGame_Create</Link>
-                    <Link to='/CreateGame_Select' className="navLink">CreateGame_Select</Link>
                     <Link to='/AboutUs' className="navLink">About Us</Link>
+                    
+                    <Link to='/CreateGame' className="navLink">CreateGame</Link>
+                    <Link to='/CreateGame_Create' className="navLink">Create New Game</Link>
+                    <Link to='/CreateGame_Select' className="navLink">Play A Game</Link>
+                    
                 </div>
             </header>
         )
     }
 
 }
+
+//{userId && <Link to='/DataScrapeExample' className="navLink">Data Scrape Example</Link>}
+//{userId && <Link to='/create' className="navLink">submit</Link>}
+//{userId && <Link to='/profile' className="navLink">profile</Link>}
 
 export default withRouter(Header)
