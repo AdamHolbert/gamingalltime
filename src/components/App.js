@@ -14,7 +14,7 @@ import DataScrapeExample from './DataScrapeExample';
 import AccessRestriction from './AccessRestrictionPage';
 
 import { Switch, Route } from 'react-router-dom'
-import { GC_USER_ID, GC_AUTH_TOKEN } from '../constants'
+import { GC_USER_ID } from '../constants'
 
 class App extends Component {
     render() {
