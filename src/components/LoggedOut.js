@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { graphql, gql } from 'react-apollo'
 import { GC_USER_ID, GC_AUTH_TOKEN } from '../constants'
 
-class PeopleInfo extends React.Component{
+class LoggedOut extends React.Component{
     render() {
         const userId = localStorage.getItem(GC_USER_ID)
           // 1
@@ -22,7 +22,7 @@ class PeopleInfo extends React.Component{
         return (
             <div>
                 {linksToRender.map(user => (
-                    processUser(user)
+                    processUsers(user)
                 ))}
             </div>
         )
@@ -31,7 +31,7 @@ class PeopleInfo extends React.Component{
 }
 
 
-const processUser = (user) => {
+const processUsers = (user) => {
     return(
         <p>
             Name: {user.name} <br/>
@@ -43,8 +43,7 @@ const processUser = (user) => {
 
 const ALL_USER_QUERY = gql`
 query allUserQuery{
-    allUsers(filter: {id: "{userId}"}){
-    id
+    allUsers{
     name
     email
   }
@@ -54,4 +53,4 @@ query allUserQuery{
 
 //alum
 
-export default graphql(ALL_USER_QUERY, {name: 'allUserQuery'}) (PeopleInfo)
+export default graphql(ALL_USER_QUERY, {name: 'allUserQuery'}) (LoggedOut)
