@@ -11,11 +11,6 @@ import HomePage from './HomePage';
 import AboutUsPage from './AboutUsPage';
 import UnknownPage from './UnknownPage';
 import DataScrapeExample from './DataScrapeExample';
-<<<<<<< HEAD
-import AboutUs from './AboutUsPage';
-=======
-
->>>>>>> 4ff17b0eb014f16ca6e67dc6f485c2e3e836a905
 import { Switch, Route } from 'react-router-dom'
 
 class App extends Component {
