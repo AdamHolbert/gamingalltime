@@ -14,7 +14,6 @@ class HomePage extends React.Component {
                     </div>
                         :
                     <div>
-                    
                         You are currently not logged in. Please log in to gain all the functions this website has to offer.
                     </div>
                 }
