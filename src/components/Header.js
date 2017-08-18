@@ -10,7 +10,7 @@ class Header extends Component {
         return (
             <header>
                 <div className="headTitle">
-                    <div className="headTitleText"><h3>Welcome to Gaming All Time</h3><h5>A place to store all the records!</h5></div>
+                    <div className="headTitleText"><h3>Welcome to Gaming All Time</h3><h5>A place to store all the game records!</h5></div>
                     {
                         //Turnery if userID logout, else login.
                         userId ?

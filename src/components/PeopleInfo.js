@@ -14,6 +14,11 @@ class PeopleInfo extends React.Component{
       name: 'Adam Holbert',
       description: 'The Best GraphQL Client',
       
+    }, {
+      id: '3',
+      name: 'Dylan Shoupe',
+      description: 'The bestest create game page and some routing ☃ ☃ ☃',
+      
     }]
          return(
        <div>

@@ -5,7 +5,6 @@ import Header from './Header';
 import CreateGame_Create from './CreateGame_Create';
 import CreateGame_Select from './CreateGame_Select';
 import CreateGame from './CreateGame';
-
 import LoginPage from './LoginPage';
 import ProfilePage from './ProfilePage';
 import HomePage from './HomePage';
