@@ -16,7 +16,7 @@ class LoginPage extends Component {
     
     render() {
         return (
-            <div>
+            <div className="loginPage">
                 <h4>{this.state.login ? 'Login' : 'Sign Up'}</h4>
                 <div  className="loginArea">
                     {!this.state.login && 
@@ -51,7 +51,7 @@ class LoginPage extends Component {
                     <button className="accountBtn"
                         onClick={() => this.setState({ login: !this.state.login })}
                     >
-                    {this.state.login ? 'need to create an account?' : 'already have an account?'}
+                    {this.state.login ? 'Need to create an account?' : 'already have an account?'}
                     </button>
                 </div>
             </div>

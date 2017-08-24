@@ -11,6 +11,16 @@ header {
     border-radius: 15px;
 }
 
+.loginPage{
+    width: 300px;
+    margin: auto;
+    text-align: center;
+    font-size: 35px;
+}
+
+.homePageLogin2{
+    width: 450;
+}
 .headTitle{
     margin: 5px;
     }
@@ -21,24 +31,30 @@ header {
 }
 
 .passwordArea{
-    margin: 20px;
     display: block;
-    align-items: center
+    margin: auto;
+    margin-bottom: 45px;
+    margin-top: 10px;
+    width: 200px;
 }
 
 .emailArea{
-    margin: 20px;
     display: block;
+    margin: auto;
+    margin-bottom: 30px; 
+    margin-top: 10px;
+    width: 200px;
 }
 
 .login_create{
     display: block;
-    margin: 0 0 0 10px;
+    margin: auto;
+    margin-bottom: 20px;
 }
 
 .accountBtn{
-    margin: 5px 0 0 10px;
     display: block;
+    margin:auto;
 }
 
 .nameArea{
