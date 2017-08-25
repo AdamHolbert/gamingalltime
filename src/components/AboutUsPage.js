@@ -4,7 +4,7 @@ class AboutUsPage extends React.Component {
     
     render(){
         return(
-            <div>                
+            <div className = "aboutUs">
                 <p>
                     <br/>Gaming All Time is a Web-App designed to make scoring a Board-Game a much easier expierence.
                     <br/>You have the choice to join games with all your gaming friends and log High Scores and rise to the top.

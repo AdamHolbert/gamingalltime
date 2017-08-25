@@ -16,7 +16,7 @@ class LoginPage extends Component {
     
     render() {
         return (
-            <div className="loginPage">
+            <div className="pageHeader">
                 <h4>{this.state.login ? 'Login' : 'Sign Up'}</h4>
                 <div  className="loginArea">
                     {!this.state.login && 

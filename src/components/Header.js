@@ -31,8 +31,8 @@ class Header extends Component {
                     {userId && <Link to='/CreateGame' className="navLink">CreateGame</Link>}
                     {userId && <Link to='/CreateGame_Create' className="navLink">Create New Game</Link>}
                     {userId && <Link to='/CreateGame_Select' className="navLink">Play A Game</Link>}
-                    {userId && <Link to='/create' className="navLink">submit</Link>}
-                    {userId && <Link to='/profile' className="navLink">profile</Link>}
+                    {userId && <Link to='/create' className="navLink">Submit</Link>}
+                    {userId && <Link to='/profile' className="navLink">Profile</Link>}
                 </div>
             </header>
         )

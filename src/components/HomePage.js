@@ -8,7 +8,7 @@ class HomePage extends React.Component {
         const userId = localStorage.getItem(GC_USER_ID)
         return(
                 <div>
-                    <div><h1>Welcome to the home page!</h1></div>
+                    <div className="homeHeader"><h1>Welcome to the home page!</h1></div>
                     {userId ?
                         <div> 
                             <h2>Welcome User!</h2>

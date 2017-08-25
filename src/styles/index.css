@@ -11,7 +11,21 @@ header {
     border-radius: 15px;
 }
 
-.loginPage{
+div{
+    margin: 15px;
+}
+.aboutUs{
+    margin:auto;
+    text-align: center;
+    font-size: 24px;
+}
+
+.homeHeader{
+    margin:auto;
+    width: 450px;
+}
+
+.pageHeader{
     width: 300px;
     margin: auto;
     text-align: center;
@@ -77,20 +91,6 @@ header {
     margin: auto;
 }
 
-.headLogin {
-    margin: 7px 0 0 0;
-    float:right;
-    padding: 5px;
-}
-
-.headLogout {
-    margin: 7px 0 0 0;
-    float:right;
-    padding: 5px;
-    background-color: #d55;
-    border: solid red 2px;
-}
-
 .headNavBar {
     font-size: 15px;
     text-align: left;
@@ -103,6 +103,25 @@ header {
     display: inline-block;
     padding: 5px;
     margin: 10px;
-    text-decoration: underline ;
+    font-size: 22px;
+    text-decoration: none;
 }
 
+.navLink:hover{
+    color:pink;
+}
+
+.headLogin {
+    margin: 10px;
+    float:right;
+    padding: 5px;
+    font-size: 22px;
+}
+
+.headLogout {
+    margin: 7px 0 0 0;
+    float:right;
+    padding: 5px;
+    background-color: #d55;
+    border: solid red 2px;
+}
