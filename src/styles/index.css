@@ -11,6 +11,30 @@ header {
     border-radius: 15px;
 }
 
+div{
+    margin: 15px;
+}
+.aboutUs{
+    margin:auto;
+    text-align: center;
+    font-size: 24px;
+}
+
+.homeHeader{
+    margin:auto;
+    width: 450px;
+}
+
+.pageHeader{
+    width: 300px;
+    margin: auto;
+    text-align: center;
+    font-size: 35px;
+}
+
+.homePageLogin2{
+    width: 450px;
+}
 .headTitle{
     margin: 5px;
     }
@@ -21,24 +45,30 @@ header {
 }
 
 .passwordArea{
-    margin: 20px;
     display: block;
-    align-items: center
+    margin: auto;
+    margin-bottom: 45px;
+    margin-top: 10px;
+    width: 200px;
 }
 
 .emailArea{
-    margin: 20px;
     display: block;
+    margin: auto;
+    margin-bottom: 30px; 
+    margin-top: 10px;
+    width: 200px;
 }
 
 .login_create{
     display: block;
-    margin: 0 0 0 10px;
+    margin: auto;
+    margin-bottom: 20px;
 }
 
 .accountBtn{
-    margin: 5px 0 0 10px;
     display: block;
+    margin:auto;
 }
 
 .nameArea{
@@ -61,20 +91,6 @@ header {
     margin: auto;
 }
 
-.headLogin {
-    margin: 7px 0 0 0;
-    float:right;
-    padding: 5px;
-}
-
-.headLogout {
-    margin: 7px 0 0 0;
-    float:right;
-    padding: 5px;
-    background-color: #d55;
-    border: solid red 2px;
-}
-
 .headNavBar {
     font-size: 15px;
     text-align: left;
@@ -87,6 +103,25 @@ header {
     display: inline-block;
     padding: 5px;
     margin: 10px;
-    text-decoration: underline ;
+    font-size: 22px;
+    text-decoration: none;
 }
 
+.navLink:hover{
+    color:pink;
+}
+
+.headLogin {
+    margin: 10px;
+    float:right;
+    padding: 5px;
+    font-size: 22px;
+}
+
+.headLogout {
+    margin: 7px 0 0 0;
+    float:right;
+    padding: 5px;
+    background-color: #d55;
+    border: solid red 2px;
+}
