@@ -1,6 +1,6 @@
 import React from 'react';
-import { GC_USER_ID, GC_AUTH_TOKEN } from '../constants'
-import PeopleInfo from './PeopleInfo';
+import { GC_USER_ID, GC_AUTH_TOKEN } from '../constants';
+import LoggedIn from './LoggedIn';
 import LoggedOut from './LoggedOut';
 class HomePage extends React.Component {
     
@@ -13,7 +13,7 @@ class HomePage extends React.Component {
                     <div> 
                         <h2>Welcome User!</h2>
                         <h3>All Registered Users</h3>
-                        <PeopleInfo id={userId}/>
+                        <LoggedIn />
                     </div>
                         :
                     <div>
