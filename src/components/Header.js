@@ -16,11 +16,11 @@ class Header extends Component {
                         userId ?
                         // This is a function, please don't be scared by it. I wish I knew how
                         // to move it out and make it class level rather then inline.
-                        <div className="headLogout" onClick={() => {
+                        <link className="headLogout" onClick={() => {
                             localStorage.removeItem(GC_USER_ID)
                             localStorage.removeItem(GC_AUTH_TOKEN)
                             this.props.history.push(`/`)
-                        }}>logout</div>
+                        }}>logout</link>
                         :
                         <Link className="headLogin" to='/login'>login</Link>
                     }
