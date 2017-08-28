@@ -35,9 +35,9 @@ div{
 .homePageLogin2{
     width: 450px;
 }
+
 .headTitle{
     margin: 5px;
-    background-color: greenyellow;
     }
 
 .loginArea{
@@ -90,6 +90,14 @@ div{
     background-color: darkcyan;
     width: 525px;
     margin: auto;
+
+}
+
+@media screen and (max-width: 650px) and (min-width: 0px) {
+    .headTitleText{
+        width: 175px;
+        text-align: center;
+    }
 }
 
 .headNavBar {
