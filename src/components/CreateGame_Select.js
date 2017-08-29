@@ -8,7 +8,7 @@ import { GC_USER_ID } from '../constants'
 
 
 class CreateGame_Select extends React.Component {
-    
+    debug
  
     render(){
         console.log(this.props)
@@ -23,7 +23,7 @@ class CreateGame_Select extends React.Component {
         }
         
         const playableGames = this.props.getGames.allGameTypes || []
- console.log(playableGames)
+
  
         return(
             
