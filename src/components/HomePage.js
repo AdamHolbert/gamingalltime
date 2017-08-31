@@ -1,6 +1,6 @@
 import React from 'react';
-import { GC_USER_ID, GC_AUTH_TOKEN } from '../constants'
-import PeopleInfo from './PeopleInfo';
+import { GC_USER_ID, GC_AUTH_TOKEN } from '../constants';
+import LoggedIn from './LoggedIn';
 import LoggedOut from './LoggedOut';
 class HomePage extends React.Component {
     
@@ -8,12 +8,12 @@ class HomePage extends React.Component {
         const userId = localStorage.getItem(GC_USER_ID)
         return(
             <div>
-                <div><h1>Welcome to the home page!</h1></div>
+                <div className="homeHeader"><h1>Welcome to the home page!</h1></div>
                 {userId ?
                     <div> 
                         <h2>Welcome User!</h2>
                         <h3>All Registered Users</h3>
-                        <PeopleInfo id={userId}/>
+                        <LoggedIn />
                     </div>
                         :
                     <div>
@@ -26,6 +26,7 @@ class HomePage extends React.Component {
                     </div>
                 }
             </div>
+
         )
     }
 }
