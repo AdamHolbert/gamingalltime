@@ -1,17 +1,21 @@
 import React from "react";
-import { ApolloClient } from "react-apollo";
-import { Link } from "react-router-dom";
+import { graphql, gql } from 'react-apollo';
+import { GC_USER_ID } from '../constants'
 
 class ProfilePage extends React.Component {
   render() {
+    const userInfo = this.props.getInfo.User
+    console.log('user info == ' + userInfo)
+
     return (
+      
       <div>
         <div>Profile</div>
-        <Link to="/create"></Link>
+        {/* <Link to="/create"></Link> */}
         <div id="pageContent">
           <div>
             <header />
-            <nav>Nav Panel</nav>
+            <nav></nav>
           </div>
 
           <div id="userInfo">
@@ -24,7 +28,9 @@ class ProfilePage extends React.Component {
             <button onClick={this.setUserPassword()}>Change Password</button>
 
             <h2>Bio:</h2>
-              
+              <div id="bioSection">
+                {this.getUserBio()}
+              </div>
 
             <h2>Friend List:</h2>
             <p id="userFriends">
@@ -74,14 +80,17 @@ class ProfilePage extends React.Component {
   }
 
   getUserBio() {
-    return (
-      <div>
-        <p id="userBio">
-          // Query to fetch user's bio only
-        </p>
-        <button id="btnChangeBio" onClick={this.updateUserBio()}>Update Bio</button>
-      </div>
-    )
+    // return (<div id="bioSection">
+    //   $(this.props.children).replace({
+    //     ""
+    //   })
+    //     <p id="userBio">
+    //       stuff goes here
+    //       // Query to fetch user's bio only
+    //     </p>
+    //     <button id="btnChangeBio" onClick={this.updateUserBio()}>Update Bio</button>
+    //   </div>
+    // )
   }
 
   // *** SET DATA ***
@@ -114,4 +123,19 @@ class ProfilePage extends React.Component {
     console.log("Change user's Password");
   }
 }
-export default ProfilePage;
+
+
+
+const GET_INFO_QUERY = gql`
+  query getInfo($id: ID!) {
+    User(id: $id) {
+      id
+      name
+      email
+      bio
+
+    }
+  }`
+
+
+export default graphql(GET_INFO_QUERY, {name: 'query', options: {variables: {id: localStorage.getItem(GC_USER_ID)} }})(ProfilePage);
