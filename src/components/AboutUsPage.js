@@ -10,7 +10,7 @@ class AboutUsPage extends React.Component {
                     <br/>You have the choice to join games with all your gaming friends and log High Scores and rise to the top.
                     <br/>Gaming All Time was developed by a Team of students attending Neumont Univeristy in Salt Lake City, Utah.😎
                 </p>
-                <img src="../..//Pictures/neumont.jpg" height="350" width="300" alt=""></img>
+                <img src="https://media.glassdoor.com/l/128284/neumont-university-office.jpg" alt="Neumont"></img>
             </div>
         )
     }
