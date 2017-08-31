@@ -10,7 +10,6 @@ class CreateGame_Create extends React.Component {
         this.handleTypeTextChange = this.handleTypeTextChange.bind(this);
         this.handleGameType = this.handleGameType.bind(this);
         this.handleScore = this.handleScore.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleMaxPlayersTextChange = this.handleMaxPlayersTextChange.bind(this);
     }
 
