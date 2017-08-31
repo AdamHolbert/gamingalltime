@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, gql } from 'react-apollo'
+import { graphql, gql, compose } from 'react-apollo'
 import { GC_USER_ID } from '../constants'
 
 
@@ -19,6 +19,8 @@ class LoggedIn extends React.Component{
 
         return(
             processUser(this.props.query.User)
+
+
         )
     }
 }
@@ -37,6 +39,19 @@ const processUser = (user) => {
     return <div>User Not Found</div>
 }
 
+const processScores = (scores) => {
+    if(scores != null) {
+        return (
+            <p>
+                Name: {scores.name} <br/>
+                Email: {scores.score} <br/>
+
+            </p>
+        )
+    }
+    return <div>User Not Found</div>
+}
+
 
 const BASIC_USER_QUERY = gql`
 query query($id: ID!){
@@ -47,6 +62,20 @@ query query($id: ID!){
     }
 }`
 
+const USER_GROUPS_QUERY = gql`
+query allUserGroups($id: ID!){
+   User(id: $id){
+     groupIn{
+       name
+      }
+   }
+}`
 
 
-export default graphql(BASIC_USER_QUERY, {name: 'query', options: {variables: {id: localStorage.getItem(GC_USER_ID)} }})(LoggedIn);
+
+
+
+export default compose(
+    graphql(BASIC_USER_QUERY, {name: 'query', options: {variables: {id: localStorage.getItem(GC_USER_ID)} }}),
+    graphql(USER_GROUPS_QUERY, {name: 'groupNames', options: {variables: {id: localStorage.getItem(GC_USER_ID)} }})
+    )(LoggedIn);

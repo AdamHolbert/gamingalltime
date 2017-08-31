@@ -2,6 +2,7 @@ import React from 'react';
 import { GC_USER_ID, GC_AUTH_TOKEN } from '../constants';
 import LoggedIn from './LoggedIn';
 import LoggedOut from './LoggedOut';
+import AllScores from './AllScores'
 class HomePage extends React.Component {
     
     render(){
@@ -21,6 +22,7 @@ class HomePage extends React.Component {
                         <h2>Don't Have An Account? Well Create One Today!! </h2>
                         <h3>All Registered Users</h3>
                         <LoggedOut/>
+                        <AllScores/>
                     </div>
                        
                     </div>
