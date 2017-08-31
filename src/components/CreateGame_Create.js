@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql, gql } from 'react-apollo'
-import { GC_USER_ID } from '../constants'
 
 class CreateGame_Create extends React.Component {
     constructor(props) {
@@ -41,7 +40,7 @@ class CreateGame_Create extends React.Component {
         const lowScore = this.state.lowscore
         const continueScore = this.state.continueScoring
         const maxPlayers = this.state.MaxPlayers
-        const result = await this.props.createNewGame({
+        await this.props.createNewGame({
             variables: {
                 name: gameName,
                 subGenre,

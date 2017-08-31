@@ -1,5 +1,5 @@
 import React from 'react';
-import { GC_USER_ID, GC_AUTH_TOKEN } from '../constants';
+import { GC_USER_ID } from '../constants';
 import LoggedIn from './LoggedIn';
 import LoggedOut from './LoggedOut';
 import AllScores from './AllScores'

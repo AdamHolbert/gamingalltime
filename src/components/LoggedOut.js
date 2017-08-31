@@ -1,12 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-
 import { graphql, gql } from 'react-apollo'
-import { GC_USER_ID, GC_AUTH_TOKEN } from '../constants'
 
 class LoggedOut extends React.Component{
     render() {
-        const userId = localStorage.getItem(GC_USER_ID)
           // 1
         if (this.props.allUserQuery && this.props.allUserQuery.loading) {
             return <div>Loading</div>

@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 
 class ProfilePage extends React.Component {
   render() {
-    const userInfo = this.props.getInfo.User
-    console.log('user info == ' + userInfo)
 
     return (
       

@@ -20,14 +20,14 @@ class DataScrapeExample extends Component {
             }`,
             updateQuery: (previous, { subscriptionData }) => {
                 console.log("addedSomething");
-                const newAllUsers = [
-                    subscriptionData.data.User.node,
-                    ...previous.allUsers
-                ]
-                const result = {
-                    ...previous,
-                    allUsers: newAllUsers
-                }
+//                const newAllUsers = [
+//                    subscriptionData.data.User.node,
+//                    ...previous.allUsers
+//                ]
+//                const result = {
+//                    ...previous,
+//                    allUsers: newAllUsers
+//                }
                 return subscriptionData
             }
         })
