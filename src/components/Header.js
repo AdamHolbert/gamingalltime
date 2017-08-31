@@ -29,7 +29,6 @@ class Header extends Component {
                     <Link to='/' className="navLink">Home</Link>
                     <Link to='/AboutUs' className="navLink">About Us</Link>
                     {userId && <Link to='/CreateGame' className="navLink">Create Game</Link>}
-                    {userId && <Link to='/create' className="navLink">Submit</Link>}
                     {userId && <Link to='/profile' className="navLink">Profile</Link>}
                 </div>
             </header>
