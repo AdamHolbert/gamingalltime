@@ -99,7 +99,7 @@ class CreateGame_Select extends React.Component {
                     </select>
                     <input type="Text" name="Score"></input>
                     <p></p>
-                    <label>Submit<input type='Submit'></input> </label>
+                    <label><input type='Submit'>Submit</input> </label>
                        
                 </form>
             </div> 
