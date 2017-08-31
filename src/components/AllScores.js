@@ -17,20 +17,37 @@ class AllScores extends React.Component{
         return(
             <div>
                 {scores.map(e => (
-                    processScores(e)
+                    processScore(e)
                 ))}
             </div>
         )
     }
 }
-const processScores = (score) => {
+const processScore = (score) => {
+
     if(score != null) {
+        const scores =  score.scores;
         return (
 
             <p key={score.id}>
                 Name:{score.gameName}<br/>
-                Score: {score.points}<br/>
+                Score: {scores.map(e => (
+                processScores(e)
+                 ))}<br/>
             </p>
+        )
+    }
+    return <div>Scores Not Found</div>
+}
+
+
+const processScores = (score) => {
+
+    if(score != null){
+        return (
+            <div key={score.id}>
+                Score: {score.points}<br/>
+            </div>
         )
     }
     return <div>Scores Not Found</div>
@@ -42,6 +59,7 @@ query getGameTypeScores{
         id
         gameName
         scores{
+          id 
           points
         } 
     }   
