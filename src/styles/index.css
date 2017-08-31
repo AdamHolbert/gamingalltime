@@ -35,6 +35,7 @@ div{
 .homePageLogin2{
     width: 450px;
 }
+
 .headTitle{
     margin: 5px;
     }
@@ -55,7 +56,7 @@ div{
 .emailArea{
     display: block;
     margin: auto;
-    margin-bottom: 30px; 
+    margin-bottom: 30px;
     margin-top: 10px;
     width: 200px;
 }
@@ -89,6 +90,14 @@ div{
     background-color: darkcyan;
     width: 525px;
     margin: auto;
+
+}
+
+@media screen and (max-width: 650px) and (min-width: 0px) {
+    .headTitleText{
+        width: 175px;
+        text-align: center;
+    }
 }
 
 .headNavBar {
@@ -105,18 +114,17 @@ div{
     margin: 10px;
     font-size: 22px;
     text-decoration: none;
-}
-
-.navLink:hover{
-    color:pink;
+    color: black;
 }
 
 .headLogin {
+    display: inline-block;
+    padding: 5px;
     margin: 10px;
     float:right;
-    padding: 5px;
     font-size: 22px;
-}
+    text-decoration: none;
+    }
 
 .headLogout {
     margin: 7px 0 0 0;
@@ -124,4 +132,12 @@ div{
     padding: 5px;
     background-color: #d55;
     border: solid red 2px;
+}
+
+.navLink:hover{
+    color:pink;
+}
+
+.headLogin:hover{
+    color:pink;
 }
