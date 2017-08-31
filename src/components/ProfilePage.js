@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql, gql } from 'react-apollo';
-import { GC_USER_ID } from '../constants'
+import { GC_USER_ID } from '../constants';
+import { Link } from 'react-router-dom';
 
 class ProfilePage extends React.Component {
   render() {
@@ -11,7 +12,7 @@ class ProfilePage extends React.Component {
       
       <div>
         <div>Profile</div>
-        {/* <Link to="/create"></Link> */}
+        <Link to="/create"></Link>
         <div id="pageContent">
           <div>
             <header />
