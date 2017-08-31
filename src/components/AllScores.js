@@ -15,7 +15,7 @@ class AllScores extends React.Component{
         }
         const scores = this.props.getGameTypeScores.allGameTypes;
         return(
-            <div>
+            <div className="scores">
                 {scores.map(e => (
                     processScore(e)
                 ))}
@@ -28,11 +28,13 @@ const processScore = (score) => {
     if(score != null) {
         const scores =  score.scores;
         return (
-
+            <div className="score">
             <p key={score.id}>
                 Name:{score.gameName}<br/>
                  {processScores(scores)}
             </p>
+            </div>
+
         )
     }
     return <div>Scores Not Found</div>
@@ -46,7 +48,7 @@ const processScores = (scores) => {
             temp += score.points + " "
         ))
         return (
-            <div>
+            <div className="line">
                 Scores: {temp}
             </div>
         )

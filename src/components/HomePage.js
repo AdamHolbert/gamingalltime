@@ -23,7 +23,9 @@ class HomePage extends React.Component {
                         <h2>Don't Have An Account? Well Create One Today!! </h2>
                         <h3>All Registered Users</h3>
                         <LoggedOut/>
-                        <h1>All Scores For Every Game Type </h1>
+                        <div className="allScores">
+                            <h1><u>All Scores For Every Game Type</u> </h1>
+                        </div>
                         <AllScores/>
                     </div>
                        

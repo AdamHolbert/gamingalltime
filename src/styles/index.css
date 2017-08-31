@@ -107,7 +107,31 @@ div{
     display: inline-block;
 
 }
+.allScores{
+    margin:auto;
+    width: 500px;
+    margin-bottom: 100px;
+}
+.scores{
+    background-color: darkcyan;
+    border-radius: 5px;
+    align-content: center;
+    width: 535px;
+    margin: auto;
+    padding: 25px;
+}
 
+.score
+{
+    margin: auto;
+    margin-bottom: 55px;
+    width:315px;
+    border-radius: 6px;;
+}
+.line{
+    align-content: center;
+
+}
 .navLink {
     display: inline-block;
     padding: 5px;
