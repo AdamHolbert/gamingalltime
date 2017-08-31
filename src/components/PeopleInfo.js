@@ -3,17 +3,6 @@ import { Link } from 'react-router-dom'
 import { graphql, gql } from 'react-apollo'
 
 class PeopleInfo extends React.Component{
-    
-_executeSearch = async () => {
-    const { USERID } = this.state
-    const result = await this.props.client.query({
-        query: ALL_USER_QUERY,
-        variables: { USERID }
-    })
-    const links = result.data.allLinks
-    this.setState({ links })
-    return (<div/>)
-}
     render() {
         const userId = this.props.id
           // 1
@@ -42,32 +31,17 @@ _executeSearch = async () => {
 
 }
 
-{/*
-            {this._executeSearch(userId)}
-                {linksToRender.map(user => (
-                processUser(user)
-                ))}*/}
-
-
 const processUser = (user) => {
     return(
+        <div>
         <p>
             Name: {user.name} <br/>
             Email: {user.email} <br/>
             
         </p>
+        </div>
     )
 }
-
-{/*const ALL_USER_QUERY = gql`
-query allUserQuery($USERID : ID){
-    allUsers(filter: {id: $USERID}){
-    name
-    email
-  }
-}`
-, {options: { variables: { USERID: this.props.id } }}
-*/}
 
 const ALL_USER_QUERY = gql`
 query allUserQuery{
@@ -78,7 +52,5 @@ query allUserQuery{
         password
     }
 }`
-
-//alum, 
 
 export default graphql(ALL_USER_QUERY, {name: 'allUserQuery'}) (PeopleInfo)
