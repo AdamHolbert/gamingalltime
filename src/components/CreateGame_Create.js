@@ -1,47 +1,77 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { graphql, gql } from 'react-apollo'
 
 class CreateGame_Create extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {Name: '', Type: 'Boardgame', Score: 'Points'};
-   
-        this.handleTextChange = this.handleTextChange.bind(this);
-        this.handleType = this.handleType.bind(this);
+        this.state = {Name: '', SubGenre: '', Type: 'Boardgame', Score: 'Points', lowscore: false, continueScoring: false, MaxPlayers: 0};
+        this.handleNameTextChange = this.handleNameTextChange.bind(this);
+        this.handleTypeTextChange = this.handleTypeTextChange.bind(this);
+        this.handleGameType = this.handleGameType.bind(this);
         this.handleScore = this.handleScore.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleMaxPlayersTextChange = this.handleMaxPlayersTextChange.bind(this);
     }
 
-    handleTextChange(event) {
+    handleNameTextChange(event) {
         this.setState({Name: event.target.value});
     }
     
-    handleType(event) {
+    handleMaxPlayersTextChange(event) {
+        this.setState({MaxPlayers: Number(event.target.value)});
+    }
+    
+    handleTypeTextChange(event) {
+        this.setState({SubGenre: event.target.value});
+    }
+    
+    handleGameType(event) {
         this.setState({Type: event.target.value});
     }
     
     handleScore(event) {
         this.setState({Score: event.target.value});
     }
-
-    handleSubmit(event) {
-        alert('Game: ' + this.state.Name + '\nType: ' + this.state.Type + '\nScore Type: ' + this.state.Score);
-        event.preventDefault();
+    
+    _createGame = async () => {
+        const gameName = this.state.Name
+        const subGenre = this.state.SubGenre
+        const gameType = this.state.Type
+        const score = this.state.Score
+        const lowScore = this.state.lowscore
+        const continueScore = this.state.continueScoring
+        const maxPlayers = this.state.MaxPlayers
+        await this.props.createNewGame({
+            variables: {
+                name: gameName,
+                subGenre,
+                typeGame: gameType,
+                score: score,
+                lowScore,
+                continueScore,
+                maxPlayers
+            }
+        })
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <div>
+            <form onSubmit={() => this._createGame()}>
             <br/>
             <label>
                 Name:
-                <input type="text" required value={this.state.Name} onChange={this.handleTextChange} />
+                <input type="text" required value={this.state.Name} onChange={this.handleNameTextChange} />
+             </label>
+            <br/><br/>
+            <label>
+                Sub Genre:
+                <input type="text" required value={this.state.SubGenre} onChange={this.handleTypeTextChange} />
              </label>
             <br/><br/>
 
             <label>
                 Type Of Game:
-                <select value={this.state.Type} onChange={this.handleType}>
+                <select value={this.state.GameType} onChange={this.handleGameType}>
                 <option value="CardGame">Card Game</option>
                 <option value="Boardgame">Boardgame</option>
                 <option value="RPG">RPG</option>
@@ -53,13 +83,51 @@ class CreateGame_Create extends React.Component {
                 <option value="Money">Money</option>
                 <option value="Points">Points</option>
                 <option value="Rounds">Rounds</option>
+                <option value="Moves">Moves</option>
                 </select>
-            </label><br/>
+            </label>
+            
+            <br/>
+            <br/>
+            <label>
+                Max Players:
+                <input type="text" required value={this.state.MaxPlayers} onChange={this.handleMaxPlayersTextChange} />
+             </label>
+            <br/>
+            <br/>
+            <label>
+                Continous Scoring:
+                <input id="ContinousScoring" type="checkbox" onChange={(e) => this.setState({continueScoring: !this.state.lowscore.value})}/>
+            </label>
+            <br/>
+            <br/>
+            <label>
+                Low-Score Wins:
+                <input id="LowScoreWins" type="checkbox" onChange={(e) => this.setState({lowscore: !this.state.lowscore.value})}/>
+            </label>
+            <br/>
             <br/>
             <input type="submit" value="Submit" />
             </form>
+        </div>
         );
     }
 }
 
-export default CreateGame_Create
+const Create_New_Game = gql`
+mutation CreateNewGame($name: String!, $subGenre: String!, $typeGame: String!, $score: String!, $lowScore: Boolean!, $continueScore: Boolean!, $maxPlayers: Int!) {
+    createGameType(
+      gameName: $name,
+      subGenre: $subGenre,
+      gameType: $typeGame
+      scoreType: $score,
+      lowScoreWins: $lowScore,
+      continuousScoring: $continueScore,
+      maxPlayers: $maxPlayers
+    ) {
+      gameName
+    }
+  }
+`
+
+export default graphql(Create_New_Game, {name: 'createNewGame'})(CreateGame_Create)
