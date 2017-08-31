@@ -23,13 +23,13 @@ class AllScores extends React.Component{
         )
     }
 }
-
 const processScores = (score) => {
     if(score != null) {
         return (
+
             <p key={score.id}>
                 Name:{score.gameName}<br/>
-                Score: {score.points} <br/>
+                Score: {score.points}<br/>
             </p>
         )
     }

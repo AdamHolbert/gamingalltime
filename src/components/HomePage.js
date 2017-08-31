@@ -13,8 +13,9 @@ class HomePage extends React.Component {
                 {userId ?
                     <div> 
                         <h2>Welcome User!</h2>
-                        <h3>All Registered Users</h3>
                         <LoggedIn />
+                        <h1>All Scores For Every Game Type </h1>
+                        <AllScores/>
                     </div>
                         :
                     <div>
@@ -22,6 +23,7 @@ class HomePage extends React.Component {
                         <h2>Don't Have An Account? Well Create One Today!! </h2>
                         <h3>All Registered Users</h3>
                         <LoggedOut/>
+                        <h1>All Scores For Every Game Type </h1>
                         <AllScores/>
                     </div>
                        
