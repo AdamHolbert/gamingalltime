@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import { graphql, gql } from 'react-apollo'
-import { GC_USER_ID } from '../constants'
 
 
 

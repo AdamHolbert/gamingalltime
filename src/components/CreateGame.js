@@ -1,7 +1,4 @@
 import React from 'react'
-import { GC_USER_ID, GC_AUTH_TOKEN } from '../constants'
-import { gql, graphql, compose } from 'react-apollo'
-import { Link } from 'react-router-dom'
 
 class CreateGame extends React.Component {
 
