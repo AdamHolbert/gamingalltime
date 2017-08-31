@@ -33,23 +33,8 @@ class CreateGame_Create extends React.Component {
     handleScore(event) {
         this.setState({Score: event.target.value});
     }
-
-    handleSubmit(event) {
-        alert('Game: ' + this.state.Name + 
-              '\nSub Genre: ' + this.state.SubGenre + 
-              '\nGame Type: ' + this.state.Type + 
-              '\nScore Type: ' + this.state.Score + 
-              '\nLow-Score Wins: ' + this.state.lowscore + 
-              '\nContinous Scoring: ' + this.state.continueScoring +
-              '\nMax Players: ' + this.state.MaxPlayers);
-        () => this._createGame()
-        event.preventDefault();
-    }
     
     _createGame = async () => {
-        console.log(this.props.createNewGame);
-        console.log(this.state);
-        
         const gameName = this.state.Name
         const subGenre = this.state.SubGenre
         const gameType = this.state.Type
@@ -57,13 +42,6 @@ class CreateGame_Create extends React.Component {
         const lowScore = this.state.lowscore
         const continueScore = this.state.continueScoring
         const maxPlayers = this.state.MaxPlayers
-        console.log('Game: ' + gameName + 
-              '\nSub Genre: ' + subGenre + 
-              '\nGame Type: ' + gameType + 
-              '\nScore Type: ' + score + 
-              '\nLow-Score Wins: ' + lowScore + 
-              '\nContinous Scoring: ' + continueScore +
-              '\nMax Players: ' + maxPlayers);
         const result = await this.props.createNewGame({
             variables: {
                 name: gameName,
@@ -131,11 +109,8 @@ class CreateGame_Create extends React.Component {
             </label>
             <br/>
             <br/>
-            
             <input type="submit" value="Submit" />
             </form>
-            <br/><br/>
-            <button onClick={() => this._createGame()}>Submit</button>
         </div>
         );
     }
