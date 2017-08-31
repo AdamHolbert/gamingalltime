@@ -31,9 +31,7 @@ const processScore = (score) => {
 
             <p key={score.id}>
                 Name:{score.gameName}<br/>
-                Score: {scores.map(e => (
-                processScores(e)
-                 ))}<br/>
+                 {processScores(scores)}
             </p>
         )
     }
@@ -41,12 +39,15 @@ const processScore = (score) => {
 }
 
 
-const processScores = (score) => {
-
-    if(score != null){
+const processScores = (scores) => {
+    var temp = ""
+    if(scores != null){
+        scores.map(score => (
+            temp += score.points + " "
+        ))
         return (
-            <div key={score.id}>
-                Score: {score.points}<br/>
+            <div>
+                Scores: {temp}
             </div>
         )
     }
