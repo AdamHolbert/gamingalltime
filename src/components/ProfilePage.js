@@ -1,13 +1,30 @@
 import React from "react";
-import { graphql, gql } from 'react-apollo';
+import { graphql, gql, compose } from 'react-apollo';
 import { GC_USER_ID } from '../constants';
 import { Link } from 'react-router-dom';
 
 class ProfilePage extends React.Component {
+
+  state = {
+    updateBio : false,
+    bioText : ""
+  }
+
   render() {
 
+    if (this.props.getInfo && this.props.getInfo.loading) {
+      return <div>Loading...</div>
+    }
+
+    if (this.props.getInfo && this.props.getInfo.error) {
+      return <div>Error...</div>
+    }
+
+    const userInfo = this.props.getInfo.User
+    console.log(userInfo)
+
     return (
-      
+
       <div>
         <div>Profile</div>
         <Link to="/create"></Link>
@@ -18,18 +35,18 @@ class ProfilePage extends React.Component {
           </div>
 
           <div id="userInfo">
-            <img src={this.getUserAvatar()} alt="Unable to fetch avatar!" />
+            <img src={userInfo.avatar} alt="Unable to fetch avatar!" />
 
             <h2>User Information:</h2>
             <p>
-              {this.getUserInfo()}
+              {this.getUserInfo(userInfo)}
             </p>
             <button onClick={this.setUserPassword()}>Change Password</button>
 
             <h2>Bio:</h2>
-              <div id="bioSection">
-                {this.getUserBio()}
-              </div>
+            <div id="bioSection">
+              {this.getUserBio(userInfo)}
+            </div>
 
             <h2>Friend List:</h2>
             <p id="userFriends">
@@ -72,24 +89,58 @@ class ProfilePage extends React.Component {
     console.log("Fetched user avatar");
   }
 
-  getUserInfo() {
-    //Queries to fetch user's information EXCEPT BIO
+  getUserInfo(userInfo) {
+    return (
+      <div>
+        <p>
+          Name: {userInfo.name}
+        </p>
+        <p>        
+          E-Mail: {userInfo.email}
+        </p>
+      </div>
 
-    console.log("Fetched user info");
+    )
+
   }
 
-  getUserBio() {
-    // return (<div id="bioSection">
-    //   $(this.props.children).replace({
-    //     ""
-    //   })
-    //     <p id="userBio">
-    //       stuff goes here
-    //       // Query to fetch user's bio only
-    //     </p>
-    //     <button id="btnChangeBio" onClick={this.updateUserBio()}>Update Bio</button>
-    //   </div>
-    // )
+  getUserBio(userInfo) {
+    if (userInfo) {
+
+      return (
+        <div>
+           {this.state.updateBio ? 
+          <div>
+            <textarea rows="6" cols="70" id="userBio" onInput={e => {
+                console.log(e)
+              }}>
+              {userInfo.bio ? userInfo.bio : "Empty"}
+            </textarea> 
+          </div>
+          :
+          <p id="userBio">
+            {userInfo.bio ? userInfo.bio : "Empty"}
+          </p>
+           }
+          <button className="btnUpdateBio"
+            onClick={() => {
+              if (this.state.updateBio) {
+                this.setUserBio()
+              }
+              this.setState({ updateBio: !this.state.updateBio })
+              
+            }}>
+            {this.state.updateBio ? 'Save Bio1' : 'Update Bio1'}
+            {/* {this.state.updateBio && this.setUserBio(userInfo)} */}
+          </button>
+        </div>
+      )
+    }
+    return (
+      <div>
+        "error"
+      </div>
+    )
   }
 
   // *** SET DATA ***
@@ -98,13 +149,13 @@ class ProfilePage extends React.Component {
     console.log("Manage user's Friend List");
   }
 
-  updateUserBio() {
+  updateUserBio(userInfo) {
     return (
       <div>
         <textarea rows="6" cols="70" id="userBio">
-          //Query to fetch user's bio only
+          {userInfo.bio ? userInfo.bio : "Empty"}
         </textarea>
-        <button id="btnChangeBio" onClick={this.setUserBio()}>Save Bio</button>
+        <button id="btnChangeBio" onClick={this.setUserBio(userInfo)}>Save Bio</button>
       </div>
     )
   }
@@ -129,6 +180,7 @@ const GET_INFO_QUERY = gql`
   query getInfo($id: ID!) {
     User(id: $id) {
       id
+      avatar
       name
       email
       bio
@@ -137,4 +189,4 @@ const GET_INFO_QUERY = gql`
   }`
 
 
-export default graphql(GET_INFO_QUERY, {name: 'query', options: {variables: {id: localStorage.getItem(GC_USER_ID)} }})(ProfilePage);
+export default graphql(GET_INFO_QUERY, { name: 'getInfo', options: { variables: { id: localStorage.getItem(GC_USER_ID) } } })(ProfilePage);
