@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql, gql, compose } from 'react-apollo';
+import { graphql, gql } from 'react-apollo';
 import { GC_USER_ID } from '../constants';
 import { Link } from 'react-router-dom';
 

@@ -3,38 +3,38 @@ import { graphql, gql } from 'react-apollo'
 
 class DataScrapeExample extends Component {
 
-    _subscribeToNewUsers = () => {
-        this.props.allUserQuery.subscribeToMore({
-            document: gql`
-                subscription {
-                    User(filter: {
-                        mutation_in: [CREATED]
-                    }) {
-                    node {
-                        id
-                        name
-                        email
-                        password
-                    }
-                }
-            }`,
-            updateQuery: (previous, { subscriptionData }) => {
-                console.log("addedSomething");
-//                const newAllUsers = [
-//                    subscriptionData.data.User.node,
-//                    ...previous.allUsers
-//                ]
-//                const result = {
-//                    ...previous,
-//                    allUsers: newAllUsers
+//    _subscribeToNewUsers = () => {
+//        this.props.allUserQuery.subscribeToMore({
+//            document: gql`
+//                subscription {
+//                    User(filter: {
+//                        mutation_in: [CREATED]
+//                    }) {
+//                    node {
+//                        id
+//                        name
+//                        email
+//                        password
+//                    }
 //                }
-                return subscriptionData
-            }
-        })
-    }
+//            }`,
+//            updateQuery: (previous, { subscriptionData }) => {
+//                console.log("addedSomething");
+////                const newAllUsers = [
+////                    subscriptionData.data.User.node,
+////                    ...previous.allUsers
+////                ]
+////                const result = {
+////                    ...previous,
+////                    allUsers: newAllUsers
+////                }
+//                return subscriptionData
+//            }
+//        })
+//    }
     
     componentDidMount() {
-        this._subscribeToNewUsers()
+//        this._subscribeToNewUsers()
     }
     
     render() {

@@ -6,21 +6,18 @@ import { GC_USER_ID } from '../constants'
 
 class LoggedIn extends React.Component{
     render() {
-        console.log(this.props.query.User)
         if(this.props.query && this.props.query.loading )
         {
             return <div>Loading...</div>
         }
+        
         if(this.props.query && this.props.query.error)
         {
-
             return <div>Error...</div>
         }
-
+        
         return(
             processUser(this.props.query.User)
-
-
         )
     }
 }
@@ -38,20 +35,6 @@ const processUser = (user) => {
     }
     return <div>User Not Found</div>
 }
-
-const processScores = (scores) => {
-    if(scores != null) {
-        return (
-            <p>
-                Name: {scores.name} <br/>
-                Email: {scores.score} <br/>
-
-            </p>
-        )
-    }
-    return <div>User Not Found</div>
-}
-
 
 const BASIC_USER_QUERY = gql`
 query query($id: ID!){

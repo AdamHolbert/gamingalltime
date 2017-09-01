@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import Dropdown from 'react-dropdown'
 import { graphql, gql, compose } from 'react-apollo'
 import { GC_USER_ID } from '../constants'
 
@@ -11,17 +9,15 @@ var $id = 'test'
 class CreateGame_Select extends React.Component {
     constructor(props){
         super(props);
-        this.state = {gameid: '', userid: '', score: ''}
-
-        
+        this.state = {
+            gameid: '', 
+            userid: '', 
+            score: ''
+        }
     }
   
     
-    _addScores = async () => {
-            const userid = this.state.userid
-            const gameid = this.state.gameid
-            const score = this.state.score
-            const groupID = "cj6wqfs27re480183ty7x46ob"
+    _addScores = async (gameid, groupID, score, userid) => {
             await this.props.addScore({
                 variables: {
                     gameType: gameid,
@@ -33,11 +29,11 @@ class CreateGame_Select extends React.Component {
         }
     
     render(){
-        console.log(this.props)
         if(this.props.getGames && this.props.getGames.loading )
         {
             return <div>Loading...</div>
         }
+        
         if(this.props.getGames && this.props.getGames.error)
         {
             return <div>Error...</div>
@@ -47,7 +43,6 @@ class CreateGame_Select extends React.Component {
         const selectableUsers = this.props.getUsers.allUsers || []
         
         return(
-            
             <div>
                 <div>Select A Game</div>
                 <select>
@@ -58,49 +53,25 @@ class CreateGame_Select extends React.Component {
 
                 <br></br>
                 <br></br>
-                <form onSubmit={() => this._addScores()}>
-                    <select>
-                        <option value='N/A'/>{selectableUsers.map(UserName => (populatePlayers(UserName)))}
-                    </select>
-                    <input type="Text" name="Score"></input>
-                    <p></p>
-                    <select>
-                        <option value='N/A'/>{selectableUsers.map(UserName => (populatePlayers(UserName)))}
-                    </select>
-                    <input type="Text" name="Score"></input>
-                    <p></p>
-                    <select>
-                        <option value='N/A'/>{selectableUsers.map(UserName => (populatePlayers(UserName)))}
-                    </select>
-                    <input type="Text" name="Score"></input>
-                    <p></p>
-                    <select>
-                        <option value='N/A'/>{selectableUsers.map(UserName => (populatePlayers(UserName)))}
-                    </select>
-                    <input type="Text" name="Score"></input>
-                    <p></p>
-                    <select>
-                        <option value='N/A'/>{selectableUsers.map(UserName => (populatePlayers(UserName)))}
-                    </select>
-                    <input type="Text" name="Score"></input>
-                    <p></p>
-                    <select>
-                        <option value='N/A'/>{selectableUsers.map(UserName => (populatePlayers(UserName)))}
-                    </select>
-                    <input type="Text" name="Score"></input>
-                    <p></p>
-                    <select>
-                        <option value='N/A'/>{selectableUsers.map(UserName => (populatePlayers(UserName)))}
-                    </select>
-                    <input type="Text" name="Score"></input>
-                    <p></p>
-                    <select>
-                        <option value='N/A'/>{selectableUsers.map(UserName => (populatePlayers(UserName)))}
-                    </select>
-                    <input type="Text" name="Score"></input>
-                    <p></p>
-                    <label><input type='Submit'>Submit</input> </label>
-                       
+                <form onSubmit={e => {
+                        console.log(e)
+                        alert("a")
+                    }}>
+                    <p>
+                        <select>
+                            <option value='N/A'/>{selectableUsers.map(UserName => (populatePlayers(UserName)))}
+                        </select>
+                        <input type="Text" name="Score1" />
+                    </p>
+                    <p>
+                        <select>
+                            <option value='N/A'/>{selectableUsers.map(UserName => (populatePlayers(UserName)))}
+                        </select>
+                        <input type="Text" name="Score2" />
+                    </p>
+                    <p>
+                        <input type='Submit' />
+                    </p>
                 </form>
             </div> 
         )
@@ -110,15 +81,22 @@ class CreateGame_Select extends React.Component {
 
 
 const populatePlayers = (UserName) => {
-    return(
-        <option name="SelectedUser" value={UserName.id}>{UserName.name}</option>
-    )
+    if(UserName){
+        return(
+            <option key={UserName.id} name="SelectedUser" value={UserName.id}>{UserName.name}</option>
+        )
+    }
+    return <option>Error</option>
 }
 
 const populateMenu = (GameType) => {
-    return(
-        <option name="SelectedGame" value={GameType.id}>{GameType.gameName} - {GameType.subGenre}</option>
-    )
+    if(GameType){
+        return(
+            <option key={GameType.id} name="SelectedGame" value={GameType.id}>{GameType.gameName} - {GameType.subGenre}</option>
+        )    
+    }
+    return <option>Error</option>
+    
 }
 
 const GET_USERS = gql`
