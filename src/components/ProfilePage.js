@@ -1,17 +1,28 @@
 import React from "react";
-import { graphql, gql } from 'react-apollo';
+import { graphql, gql, compose } from 'react-apollo';
 import { GC_USER_ID } from '../constants';
 import { Link } from 'react-router-dom';
 
 class ProfilePage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {updateBio: false, bioText: ''};
+        this.state = {updateBio: false, bioText: '', valuesLoaded : false};
         this.handleBioChange = this.handleBioChange.bind(this)
     }
     
-  handleBioChange(event) {
+    handleBioChange(event) {
         this.setState({bioText: event.target.value});
+    }
+    
+    _changeBio = async () => {
+        const BioText = this.state.bioText
+        const UserId = localStorage.getItem(GC_USER_ID)
+        await this.props.ChangeBio({
+            variables: {
+                id : UserId,
+                bio : BioText
+            }
+        })
     }
 
   render() {
@@ -23,6 +34,10 @@ class ProfilePage extends React.Component {
     if (this.props.getInfo && this.props.getInfo.error) {
       return <div>Error...</div>
     }
+      
+      if(!this.props.getInfo.User){
+          return <div>User Not Loaded</div>
+      }
 
     const userInfo = this.props.getInfo.User
     console.log(userInfo)
@@ -43,16 +58,8 @@ class ProfilePage extends React.Component {
 
             <h2>Bio:</h2>
             <div id="bioSection">
-              {this.getUserBio(userInfo)}
+              {this.getUserBio(userInfo, this.state.valuesLoaded)}
             </div>
-
-            <h2>Friend List:</h2>
-            <p id="userFriends">
-              {this.getUserFriendList()}
-            </p>
-            <button id="btnEditFriendList" onClick={this.manageFriendList()}>
-              Edit Friend List
-            </button>
 
             <div id="userCP">
               <button onClick={this.getUserStats()}>Show Game Stats</button>
@@ -96,15 +103,17 @@ class ProfilePage extends React.Component {
 
   }
 
-  getUserBio(userInfo) {
+  getUserBio(userInfo, valuesLoaded) {
     if (userInfo) {
-
+        if(!valuesLoaded){
+            this.setState({bioText : userInfo.bio, valuesLoaded : true})
+        }
       return (
         <div>
            {this.state.updateBio ? 
           <div>
             <textarea rows="6" cols="70" id="userBio" onChange={this.handleBioChange}>
-              {userInfo.bio ? this.state.textBio : "Empty"}
+              {userInfo.bio ? this.state.bioText : "Empty"}
             </textarea> 
           </div>
           :
@@ -152,6 +161,7 @@ class ProfilePage extends React.Component {
 
   setUserBio() {
       alert(this.state.bioText);
+      this._changeBio()
     // Save new bio to DB
     return (
       this.getUserBio()
@@ -178,7 +188,7 @@ const GET_INFO_QUERY = gql`
     }
   }`
 
-const CHANGE_USER = gql`
+const CHANGE_BIO = gql`
 mutation ChangeBio($id : ID!, $bio : String!){
   updateUser(id : $id, bio : $bio){
     id
@@ -187,4 +197,7 @@ mutation ChangeBio($id : ID!, $bio : String!){
 `
 
 
-export default graphql(GET_INFO_QUERY, { name: 'getInfo', options: { variables: { id: localStorage.getItem(GC_USER_ID) } } })(ProfilePage);
+export default compose(
+    graphql(GET_INFO_QUERY, { name: 'getInfo', options: { variables: { id: localStorage.getItem(GC_USER_ID) } } }),
+    graphql(CHANGE_BIO, { name: 'ChangeBio' })
+) (ProfilePage)
