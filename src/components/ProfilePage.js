@@ -29,6 +29,17 @@ class ProfilePage extends React.Component {
             }
         })
     }
+    
+    _changeAvatar = async () => {
+        const AvatarLink = this.state.avatar
+        const UserId = localStorage.getItem(GC_USER_ID)
+        await this.props.ChangeAvatar({
+            variables: {
+                id : UserId,
+                avatar : AvatarLink
+            }
+        })
+    }
 
   render() {
 
@@ -58,7 +69,7 @@ class ProfilePage extends React.Component {
             <br/><br />
             <input id="userAvatar" onChange={this.handleAvatarChange} type="text"></input>
             <br/>
-            <button onClick={(e) => this.testUserAvatar(e)}>Change Profile Picture</button>
+            <button onClick={(e) => this._changeBio(e)}>Change Profile Picture</button>
 
             <h2>User Information:</h2>
             {this.getUserInfo(userInfo)}
@@ -77,9 +88,7 @@ class ProfilePage extends React.Component {
     );
   }
 
-  testUserAvatar(){
-      alert(this.state.avatar)
-  }
+  
 
   // *** GET DATA ***
 
@@ -171,7 +180,8 @@ const GET_INFO_QUERY = gql`
       email
       bio
     }
-  }`
+  }
+`
 
 const CHANGE_BIO = gql`
 mutation ChangeBio($id : ID!, $bio : String!){
@@ -181,8 +191,17 @@ mutation ChangeBio($id : ID!, $bio : String!){
 }
 `
 
+const CHANGE_AVATAR = gql`
+mutation ChangeAvatar($id : ID!, $avatar : String!){
+  updateUser(id : $id, avatar : $avatar){
+    name
+  }
+}
+`
+
 
 export default compose(
     graphql(GET_INFO_QUERY, { name: 'getInfo', options: { variables: { id: localStorage.getItem(GC_USER_ID) } } }),
-    graphql(CHANGE_BIO, { name: 'ChangeBio' })
+    graphql(CHANGE_BIO, { name: 'ChangeBio' }),
+    graphql(CHANGE_AVATAR, { name: 'ChangeAvatar' })
 ) (ProfilePage)
