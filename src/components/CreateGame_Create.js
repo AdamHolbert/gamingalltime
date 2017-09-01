@@ -11,18 +11,6 @@ class CreateGame_Create extends React.Component {
         this.handleScore = this.handleScore.bind(this);
         this.handleMaxPlayersTextChange = this.handleMaxPlayersTextChange.bind(this);
     }
-
-    handleNameTextChange(event) {
-        this.setState({Name: event.target.value});
-    }
-    
-    handleMaxPlayersTextChange(event) {
-        this.setState({MaxPlayers: Number(event.target.value)});
-    }
-    
-    handleTypeTextChange(event) {
-        this.setState({SubGenre: event.target.value});
-    }
     
     handleGameType(event) {
         this.setState({Type: event.target.value});
@@ -55,59 +43,81 @@ class CreateGame_Create extends React.Component {
 
     render() {
         return (
-            <div>
+        <div>
             <form onSubmit={() => this._createGame()}>
-            <br/>
-            <label>
-                Name:
-                <input type="text" required value={this.state.Name} onChange={this.handleNameTextChange} />
-             </label>
-            <br/><br/>
-            <label>
-                Sub Genre:
-                <input type="text" required value={this.state.SubGenre} onChange={this.handleTypeTextChange} />
-             </label>
-            <br/><br/>
-
-            <label>
-                Type Of Game:
-                <select value={this.state.GameType} onChange={this.handleGameType}>
-                <option value="CardGame">Card Game</option>
-                <option value="Boardgame">Boardgame</option>
-                <option value="RPG">RPG</option>
-                </select>
-            </label><br/><br/>
-            <label>
-                Type Of Scoring:
-                <select value={this.state.Score} onChange={this.handleScore}>
-                <option value="Money">Money</option>
-                <option value="Points">Points</option>
-                <option value="Rounds">Rounds</option>
-                <option value="Moves">Moves</option>
-                </select>
-            </label>
-            
-            <br/>
-            <br/>
-            <label>
-                Max Players:
-                <input type="text" required value={this.state.MaxPlayers} onChange={this.handleMaxPlayersTextChange} />
-             </label>
-            <br/>
-            <br/>
-            <label>
-                Continous Scoring:
-                <input id="ContinousScoring" type="checkbox" onChange={(e) => this.setState({continueScoring: !this.state.lowscore.value})}/>
-            </label>
-            <br/>
-            <br/>
-            <label>
-                Low-Score Wins:
-                <input id="LowScoreWins" type="checkbox" onChange={(e) => this.setState({lowscore: !this.state.lowscore.value})}/>
-            </label>
-            <br/>
-            <br/>
-            <input type="submit" value="Submit" />
+                <br/>
+                <label>
+                    Name:
+                    <input type="text" required value={this.state.Name} 
+                        onChange={(event) => 
+                            this.setState({Name: event.target.value})
+                        } 
+                    />
+                </label>
+                <br/>
+                <br/>
+                <label>
+                    Sub Genre:
+                    <input type="text" required value={this.state.SubGenre} 
+                        onChange={(event) =>
+                            this.setState({SubGenre: event.target.value})
+                        }
+                    />
+                 </label>
+                <br/>
+                <br/>
+                <label>
+                    Type Of Game:
+                    <select value={this.state.GameType} onChange={this.handleGameType}>
+                        <option value="CardGame">Card Game</option>
+                        <option value="Boardgame">Boardgame</option>
+                        <option value="RPG">RPG</option>
+                    </select>
+                </label>
+                <br/>
+                <br/>
+                <label>
+                    Type Of Scoring:
+                    <select value={this.state.Score} onChange={this.handleScore}>
+                        <option value="Money">Money</option>
+                        <option value="Points">Points</option>
+                        <option value="Rounds">Rounds</option>
+                        <option value="Moves">Moves</option>
+                    </select>
+                </label>
+                <br/>
+                <br/>
+                <label>
+                    Max Players:
+                    <input type="text" required value={this.state.MaxPlayers} 
+                        onChange={(event)=> 
+                            this.setState({MaxPlayers: Number(event.target.value)})
+                        }
+                    />
+                 </label>
+                <br/>
+                <br/>
+                <label>
+                    Continous Scoring:
+                    <input id="ContinousScoring" type="checkbox" 
+                        onChange={(e) => 
+                            this.setState({continueScoring: !this.state.lowscore.value})
+                        }
+                    />
+                </label>
+                <br/>
+                <br/>
+                <label>
+                    Low-Score Wins:
+                    <input id="LowScoreWins" type="checkbox" 
+                        onChange={(e) => 
+                            this.setState({lowscore: !this.state.lowscore.value})
+                        }
+                    />
+                </label>
+                <br/>
+                <br/>
+                <input type="submit" value="Submit" />
             </form>
         </div>
         );
