@@ -18,15 +18,15 @@ class CreateGame_Select extends React.Component {
   
     
     _addScores = async (gameid, groupID, score, userid) => {
-            await this.props.addScore({
-                variables: {
-                    gameType: gameid,
-                    group: groupID,
-                    points: score,
-                    userId: userid
-                }
-            })
-        }
+        await this.props.addScore({
+            variables: {
+                gameType: gameid,
+                group: groupID,
+                points: score,
+                userId: userid
+            }
+        })
+    }
     
     render(){
         if(this.props.getGames && this.props.getGames.loading )
@@ -50,9 +50,8 @@ class CreateGame_Select extends React.Component {
                         populateMenu(GameType)
                     ))}
                 </select>
-
-                <br></br>
-                <br></br>
+                <br/>
+                <br/>
                 <form onSubmit={e => {
                         console.log(e)
                         alert("a")
