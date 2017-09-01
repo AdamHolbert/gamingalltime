@@ -64,12 +64,12 @@ class ProfilePage extends React.Component {
         <div id="pageContent">
 
           <div id="userInfo">
-            <img src="http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg" height="50" width="50" alt="Unable to fetch avatar!" />
+            <img src={userInfo.avatar} height="50" width="50" alt="Unable to fetch avatar!" />
         
             <br/><br />
             <input id="userAvatar" onChange={this.handleAvatarChange} type="text"></input>
             <br/>
-            <button onClick={(e) => this._changeBio(e)}>Change Profile Picture</button>
+            <button onClick={(e) => this._changeAvatar(e)}>Change Profile Picture</button>
 
             <h2>User Information:</h2>
             {this.getUserInfo(userInfo)}
