@@ -178,7 +178,6 @@ const GET_INFO_QUERY = gql`
       name
       email
       bio
-
     }
   }`
 
