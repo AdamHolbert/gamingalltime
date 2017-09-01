@@ -38,9 +38,8 @@ class ProfilePage extends React.Component {
             <img src={userInfo.avatar} alt="Unable to fetch avatar!" />
 
             <h2>User Information:</h2>
-            <p>
-              {this.getUserInfo(userInfo)}
-            </p>
+            {this.getUserInfo(userInfo)}
+            
             <button onClick={this.setUserPassword()}>Change Password</button>
 
             <h2>Bio:</h2>
@@ -91,15 +90,10 @@ class ProfilePage extends React.Component {
 
   getUserInfo(userInfo) {
     return (
-      <div>
         <p>
-          Name: {userInfo.name}
-        </p>
-        <p>        
+          Name: {userInfo.name} <br/>
           E-Mail: {userInfo.email}
         </p>
-      </div>
-
     )
 
   }
