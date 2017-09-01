@@ -16,7 +16,7 @@ class CreateGame_Create extends React.Component {
         };
     }
     
-    _createGame = async (event) => {
+    _createGame = async () => {
         const gameName = this.state.Name
         const subGenre = this.state.SubGenre
         const gameType = this.state.Type
@@ -42,7 +42,10 @@ class CreateGame_Create extends React.Component {
     render() {
         return (
         <div>
-            <form onSubmit={() => this._createGame()}>
+            <form onSubmit={() => {
+                this._createGame
+                this.props.history.push(`/CreateGame`)
+                }}>
                 <br/>
                 <label>
                     Name:
