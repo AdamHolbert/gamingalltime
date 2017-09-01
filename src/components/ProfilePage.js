@@ -6,12 +6,17 @@ import { Link } from 'react-router-dom';
 class ProfilePage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {updateBio: false, bioText: '', valuesLoaded : false};
+        this.state = {updateBio: false, bioText: '', valuesLoaded : false, avatar: ''};
         this.handleBioChange = this.handleBioChange.bind(this)
+        this.handleAvatarChange = this.handleAvatarChange.bind(this)
     }
     
     handleBioChange(event) {
         this.setState({bioText: event.target.value});
+    }
+    
+    handleAvatarChange(event) {
+        this.setState({avatar : event.target.value})
     }
     
     _changeBio = async () => {
@@ -40,7 +45,6 @@ class ProfilePage extends React.Component {
       }
 
     const userInfo = this.props.getInfo.User
-    console.log(userInfo)
 
     return (
       <div>
@@ -49,12 +53,15 @@ class ProfilePage extends React.Component {
         <div id="pageContent">
 
           <div id="userInfo">
-            <img src={userInfo.avatar} alt="Unable to fetch avatar!" />
+            <img src="http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg" height="50" width="50" alt="Unable to fetch avatar!" />
+        
+            <br/><br />
+            <input id="userAvatar" onChange={this.handleAvatarChange} type="text"></input>
+            <br/>
+            <button onClick={(e) => this.testUserAvatar(e)}>Change Profile Picture</button>
 
             <h2>User Information:</h2>
             {this.getUserInfo(userInfo)}
-            
-            <button onClick={this.setUserPassword()}>Change Password</button>
 
             <h2>Bio:</h2>
             <div id="bioSection">
@@ -62,7 +69,7 @@ class ProfilePage extends React.Component {
             </div>
 
             <div id="userCP">
-              <button onClick={this.getUserStats()}>Show Game Stats</button>
+              <button onClick={(e) => this.getUserStats(e)}>Show Game Stats</button>
             </div>
           </div>
         </div>
@@ -70,27 +77,16 @@ class ProfilePage extends React.Component {
     );
   }
 
-
-
-
+  testUserAvatar(){
+      alert(this.state.avatar)
+  }
 
   // *** GET DATA ***
-
-  getUserFriendList() {
-    // Query to fetch user's friend list
-    console.log("Getting user's friend list");
-  }
 
   getUserStats() {
     // Query to fetch/find user's stats
     // Take user to new page? popup? or insert the data into this page
     console.log("Show user's stats");
-  }
-
-  getUserAvatar() {
-    //Query to fetch user's avatar
-
-    console.log("Fetched user avatar");
   }
 
   getUserInfo(userInfo) {
@@ -129,7 +125,7 @@ class ProfilePage extends React.Component {
               this.setState({ updateBio: !this.state.updateBio })
               
             }}>
-            {this.state.updateBio ? 'Save Bio1' : 'Update Bio1'}
+            {this.state.updateBio ? 'Save Bio' : 'Update Bio'}
             {/* {this.state.updateBio && this.setUserBio(userInfo)} */}
           </button>
         </div>
@@ -144,10 +140,6 @@ class ProfilePage extends React.Component {
 
   // *** SET DATA ***
 
-  manageFriendList() {
-    console.log("Manage user's Friend List");
-  }
-
   updateUserBio(userInfo) {
     return (
       <div>
@@ -160,18 +152,11 @@ class ProfilePage extends React.Component {
   }
 
   setUserBio() {
-      alert(this.state.bioText);
       this._changeBio()
     // Save new bio to DB
     return (
       this.getUserBio()
     )
-  }
-
-  setUserPassword() {
-    // Show popup to change password
-    // Push new password to user db info upon form 'OK'
-    console.log("Change user's Password");
   }
 }
 
