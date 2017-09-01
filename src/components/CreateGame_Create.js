@@ -1,26 +1,22 @@
 import React from 'react';
 import { graphql, gql } from 'react-apollo'
+import { Link } from 'react-router-dom'
 
 class CreateGame_Create extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {Name: '', SubGenre: '', Type: 'Boardgame', Score: 'Points', lowscore: false, continueScoring: false, MaxPlayers: 0};
-        this.handleNameTextChange = this.handleNameTextChange.bind(this);
-        this.handleTypeTextChange = this.handleTypeTextChange.bind(this);
-        this.handleGameType = this.handleGameType.bind(this);
-        this.handleScore = this.handleScore.bind(this);
-        this.handleMaxPlayersTextChange = this.handleMaxPlayersTextChange.bind(this);
+        this.state = {
+            Name: '', 
+            SubGenre: '', 
+            Type: 'Boardgame', 
+            Score: 'Points', 
+            lowscore: false, 
+            continueScoring: false, 
+            MaxPlayers: 0
+        };
     }
     
-    handleGameType(event) {
-        this.setState({Type: event.target.value});
-    }
-    
-    handleScore(event) {
-        this.setState({Score: event.target.value});
-    }
-    
-    _createGame = async () => {
+    _createGame = async (event) => {
         const gameName = this.state.Name
         const subGenre = this.state.SubGenre
         const gameType = this.state.Type
@@ -28,7 +24,7 @@ class CreateGame_Create extends React.Component {
         const lowScore = this.state.lowscore
         const continueScore = this.state.continueScoring
         const maxPlayers = this.state.MaxPlayers
-        await this.props.createNewGame({
+        var result = await this.props.createNewGame({
             variables: {
                 name: gameName,
                 subGenre,
@@ -39,6 +35,8 @@ class CreateGame_Create extends React.Component {
                 maxPlayers
             }
         })
+        console.log(result)
+        this.props.history.push(`/CreateGame`)
     }
 
     render() {
@@ -68,7 +66,10 @@ class CreateGame_Create extends React.Component {
                 <br/>
                 <label>
                     Type Of Game:
-                    <select value={this.state.GameType} onChange={this.handleGameType}>
+                    <select value={this.state.GameType} 
+                        onChange={(event) =>
+                            this.setState({Type: event.target.value})
+                        }>
                         <option value="CardGame">Card Game</option>
                         <option value="Boardgame">Boardgame</option>
                         <option value="RPG">RPG</option>
@@ -78,7 +79,10 @@ class CreateGame_Create extends React.Component {
                 <br/>
                 <label>
                     Type Of Scoring:
-                    <select value={this.state.Score} onChange={this.handleScore}>
+                    <select value={this.state.Score}
+                        onChange={(event) =>
+                            this.setState({Score: event.target.value})
+                        }>
                         <option value="Money">Money</option>
                         <option value="Points">Points</option>
                         <option value="Rounds">Rounds</option>
@@ -117,7 +121,7 @@ class CreateGame_Create extends React.Component {
                 </label>
                 <br/>
                 <br/>
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Submit"/>
             </form>
         </div>
         );
