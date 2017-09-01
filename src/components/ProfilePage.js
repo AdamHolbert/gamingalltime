@@ -4,11 +4,15 @@ import { GC_USER_ID } from '../constants';
 import { Link } from 'react-router-dom';
 
 class ProfilePage extends React.Component {
-
-  state = {
-    updateBio : false,
-    bioText : ""
-  }
+    constructor(props) {
+        super(props);
+        this.state = {updateBio: false, bioText: ''};
+        this.handleBioChange = this.handleBioChange.bind(this)
+    }
+    
+  handleBioChange(event) {
+        this.setState({bioText: event.target.value});
+    }
 
   render() {
 
@@ -24,15 +28,10 @@ class ProfilePage extends React.Component {
     console.log(userInfo)
 
     return (
-
       <div>
         <div>Profile</div>
         <Link to="/create"></Link>
         <div id="pageContent">
-          <div>
-            <header />
-            <nav></nav>
-          </div>
 
           <div id="userInfo">
             <img src={userInfo.avatar} alt="Unable to fetch avatar!" />
@@ -59,7 +58,6 @@ class ProfilePage extends React.Component {
               <button onClick={this.getUserStats()}>Show Game Stats</button>
             </div>
           </div>
-          <footer />
         </div>
       </div>
     );
@@ -105,15 +103,13 @@ class ProfilePage extends React.Component {
         <div>
            {this.state.updateBio ? 
           <div>
-            <textarea rows="6" cols="70" id="userBio" onInput={e => {
-                console.log(e)
-              }}>
-              {userInfo.bio ? userInfo.bio : "Empty"}
+            <textarea rows="6" cols="70" id="userBio" onChange={this.handleBioChange}>
+              {userInfo.bio ? this.state.textBio : "Empty"}
             </textarea> 
           </div>
           :
           <p id="userBio">
-            {userInfo.bio ? userInfo.bio : "Empty"}
+            {userInfo.bio ? this.state.bioText : "Empty"}
           </p>
            }
           <button className="btnUpdateBio"
@@ -146,8 +142,8 @@ class ProfilePage extends React.Component {
   updateUserBio(userInfo) {
     return (
       <div>
-        <textarea rows="6" cols="70" id="userBio">
-          {userInfo.bio ? userInfo.bio : "Empty"}
+        <textarea rows="6" cols="70" id="userBio" onChange={this.handleBioChange}>
+          {userInfo.bio ? this.state.textBio : "Empty"}
         </textarea>
         <button id="btnChangeBio" onClick={this.setUserBio(userInfo)}>Save Bio</button>
       </div>
@@ -155,6 +151,7 @@ class ProfilePage extends React.Component {
   }
 
   setUserBio() {
+      alert(this.state.bioText);
     // Save new bio to DB
     return (
       this.getUserBio()
@@ -181,6 +178,14 @@ const GET_INFO_QUERY = gql`
 
     }
   }`
+
+const CHANGE_USER = gql`
+mutation ChangeBio($id : ID!, $bio : String!){
+  updateUser(id : $id, bio : $bio){
+    id
+  }
+}
+`
 
 
 export default graphql(GET_INFO_QUERY, { name: 'getInfo', options: { variables: { id: localStorage.getItem(GC_USER_ID) } } })(ProfilePage);
