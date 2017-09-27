@@ -1,167 +1,90 @@
-
 body {
-    background-color: lightblue;
+    background-color: darkgray;
     font-family: 'Work Sans', sans-serif;
+    margin: 0px;
 }
 
 header {
     padding: 4px;
     align-content: center;
-    background-color: darkcyan;
-    border-radius: 15px;
+    /*background-color: darkcyan;*/
 }
 
-div{
-    margin: 15px;
-}
-.aboutUs{
-    margin:auto;
+.loginTop {
+    width: auto;
+    height: 40px;
     text-align: center;
-    font-size: 24px;
+    font-size: xx-large;
+    display: flex;
+    align-items: stretch;
+    background-color: red;
+    justify-content: space-between;
 }
 
-.homeHeader{
-    margin:auto;
-    width: 450px;
+.loginSelected {
+    background-color: darkgray;
+    width: 50%;
+    border: 2px solid black;
+    border-bottom: none;
 }
 
-.pageHeader{
-    width: 300px;
-    margin: auto;
-    text-align: center;
-    font-size: 35px;
+.loginUnselected {
+    background-color: lightgray;
+    width: 50%;
+    border: 2px solid black;
 }
 
-.homePageLogin2{
-    width: 450px;
-}
-
-.headTitle{
-    margin: 5px;
-    }
-
-.loginArea{
-    margin: 5px;
-    display: block;
-}
-
-.passwordArea{
-    display: block;
-    margin: auto;
-    margin-bottom: 45px;
-    margin-top: 10px;
-    width: 200px;
-}
-
-.emailArea{
-    display: block;
-    margin: auto;
-    margin-bottom: 30px;
-    margin-top: 10px;
-    width: 200px;
-}
-
-.login_create{
-    display: block;
-    margin: auto;
-    margin-bottom: 20px;
-}
-
-.accountBtn{
-    display: block;
-    margin:auto;
-}
-
-.nameArea{
-    margin: 5px;
-    display: block;
-}
-
-.headTitle h3{
-    margin: 0 0 0 5px;
-}
-
-.headTitle h5{
-    margin: 0 10px 10px 5px;
-}
-
-.headTitleText {
-    font-size: 30px;
-    background-color: darkcyan;
-    width: 525px;
-    margin: auto;
-
-}
-
-@media screen and (max-width: 650px) and (min-width: 0px) {
-    .headTitleText{
-        width: 175px;
-        text-align: center;
-    }
-}
-
-.headNavBar {
-    font-size: 15px;
-    text-align: left;
-    overflow: auto;
-    display: inline-block;
-
-}
-.allScores{
-    margin:auto;
-    width: 500px;
-    margin-bottom: 100px;
-}
-.scores{
-    background-color: darkcyan;
-    border-radius: 5px;
+.loginArea {
+    display: flex;
+    flex-direction: column;
     align-content: center;
-    width: 535px;
-    margin: auto;
-    padding: 25px;
 }
 
-.score
-{
-    margin: auto;
-    margin-bottom: 55px;
-    width:315px;
-    border-radius: 6px;;
-}
-.line{
-    align-content: center;
-
-}
-.navLink {
-    display: inline-block;
-    padding: 5px;
+.loginSection {
+    width: 50%;
     margin: 10px;
-    font-size: 22px;
-    text-decoration: none;
-    color: black;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
 }
 
-.headLogin {
-    display: inline-block;
-    padding: 5px;
-    margin: 10px;
-    float:right;
-    font-size: 22px;
-    text-decoration: none;
-    }
-
-.headLogout {
-    margin: 7px 0 0 0;
-    float:right;
-    padding: 5px;
-    background-color: #d55;
-    border: solid red 2px;
+.loginButton{
+    font-size: large;
 }
 
-.navLink:hover{
-    color:pink;
+.forgotPassword {
+    display: flex;
+    flex-direction: row;
 }
 
-.headLogin:hover{
-    color:pink;
+.coolTextBox {
+    width: 100%;
+    font-size: larger;
+}
+
+input[type=text]:focus {
+    outline: none;
+}
+
+header {
+    width: 100%;
+    height: 45px;
+    background-color: #263e45;
+    font-size: 40px;
+
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.headText {
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    color: #808ec4;
+}
+
+.headTextHighlight {
+    color: #bbdefd;
 }

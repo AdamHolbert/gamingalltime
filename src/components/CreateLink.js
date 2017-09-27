@@ -2,17 +2,17 @@ import React, { Component } from 'react'
 import { graphql, gql } from 'react-apollo'
 import { GC_USER_ID } from '../constants'
 
-
-
-
 // This class is being kept here as an example of how to send data to the server
 // It also show how to hide things from the user if they aren't logged in
 
 class CreateLink extends Component {
 
-    state = {
-        description: '',
-        url: ''
+    constructor(props) {
+        super(props);
+        this.state = {
+            description: '',
+            url: ''
+        };
     }
 
     render() {
@@ -42,19 +42,19 @@ class CreateLink extends Component {
     }
 
     _createLink = async () => {
-        const postedById = localStorage.getItem(GC_USER_ID)
+        const postedById = localStorage.getItem(GC_USER_ID);
         if (!postedById) {
-            console.error('No user logged in')
+            console.error('No user logged in');
             return
         }
-        const { description, url } = this.state
+        const { description, url } = this.state;
         await this.props.createLinkMutation({
             variables: {
               description,
               url,
               postedById
             }
-        })
+        });
         this.props.history.push(`/`)
     }
 
@@ -78,6 +78,6 @@ const CREATE_LINK_MUTATION = gql`
       }
     }
   }
-`
+`;
 
 export default graphql(CREATE_LINK_MUTATION, { name: 'createLinkMutation' })(CreateLink)

@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql, gql } from 'react-apollo'
-import { Link } from 'react-router-dom'
 
 class CreateGame_Create extends React.Component {
     constructor(props) {
@@ -17,13 +16,13 @@ class CreateGame_Create extends React.Component {
     }
     
     _createGame = async () => {
-        const gameName = this.state.Name
-        const subGenre = this.state.SubGenre
-        const gameType = this.state.Type
-        const score = this.state.Score
-        const lowScore = this.state.lowscore
-        const continueScore = this.state.continueScoring
-        const maxPlayers = this.state.MaxPlayers
+        const gameName = this.state.Name;
+        const subGenre = this.state.SubGenre;
+        const gameType = this.state.Type;
+        const score = this.state.Score;
+        const lowScore = this.state.lowscore;
+        const continueScore = this.state.continueScoring;
+        const maxPlayers = this.state.MaxPlayers;
         var result = await this.props.createNewGame({
             variables: {
                 name: gameName,
@@ -35,17 +34,12 @@ class CreateGame_Create extends React.Component {
                 maxPlayers
             }
         })
-        console.log(result)
-        this.props.history.push(`/CreateGame`)
-    }
+    };
 
     render() {
         return (
         <div>
-            <form onSubmit={() => {
-                this._createGame
-                this.props.history.push(`/CreateGame`)
-                }}>
+            <form onSubmit={e => this._createGame(e)} >
                 <br/>
                 <label>
                     Name:
@@ -69,12 +63,12 @@ class CreateGame_Create extends React.Component {
                 <br/>
                 <label>
                     Type Of Game:
-                    <select value={this.state.GameType} 
+                    <select value={this.state.Type}
                         onChange={(event) =>
                             this.setState({Type: event.target.value})
                         }>
                         <option value="CardGame">Card Game</option>
-                        <option value="Boardgame">Boardgame</option>
+                        <option value="BoardGame">Board Game</option>
                         <option value="RPG">RPG</option>
                     </select>
                 </label>
@@ -124,7 +118,11 @@ class CreateGame_Create extends React.Component {
                 </label>
                 <br/>
                 <br/>
-                <input type="submit" value="Submit"/>
+                <input type="submit" value="Submit" onClick={(e) =>{
+                    console.log(e);
+
+                    e.preventDefault()
+                }}/>
             </form>
         </div>
         );
@@ -145,6 +143,6 @@ mutation CreateNewGame($name: String!, $subGenre: String!, $typeGame: String!, $
       gameName
     }
   }
-`
+`;
 
 export default graphql(Create_New_Game, {name: 'createNewGame'})(CreateGame_Create)

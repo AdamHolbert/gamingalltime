@@ -1,10 +1,5 @@
 import React from 'react';
 import { graphql, gql, compose } from 'react-apollo'
-import { GC_USER_ID } from '../constants'
-
-var $id = 'test'
-
-
 
 class CreateGame_Select extends React.Component {
     constructor(props){
@@ -14,19 +9,18 @@ class CreateGame_Select extends React.Component {
             userid: '', 
             score: ''
         }
-    }
-  
-    
-    _addScores = async (gameid, groupID, score, userid) => {
-        await this.props.addScore({
-            variables: {
-                gameType: gameid,
-                group: groupID,
-                points: score,
-                userId: userid
-            }
-        })
-    }
+    };
+
+    // _addScores = async (gameid, groupID, score, userid) => {
+    //     await this.props.addScore({
+    //         variables: {
+    //             gameType: gameid,
+    //             group: groupID,
+    //             points: score,
+    //             userId: userid
+    //         }
+    //     })
+    // };
     
     render(){
         if(this.props.getGames && this.props.getGames.loading )
@@ -39,8 +33,8 @@ class CreateGame_Select extends React.Component {
             return <div>Error...</div>
         }
         
-        const playableGames = this.props.getGames.allGameTypes || []
-        const selectableUsers = this.props.getUsers.allUsers || []
+        const playableGames = this.props.getGames.allGameTypes || [];
+        const selectableUsers = this.props.getUsers.allUsers || [];
         
         return(
             <div>
@@ -53,7 +47,7 @@ class CreateGame_Select extends React.Component {
                 <br/>
                 <br/>
                 <form onSubmit={e => {
-                        console.log(e)
+                        console.log(e);
                         alert("a")
                     }}>
                     <p>
@@ -86,7 +80,7 @@ const populatePlayers = (UserName) => {
         )
     }
     return <option>Error</option>
-}
+};
 
 const populateMenu = (GameType) => {
     if(GameType){
@@ -95,8 +89,7 @@ const populateMenu = (GameType) => {
         )    
     }
     return <option>Error</option>
-    
-}
+};
 
 const GET_USERS = gql`
 query getUsers{
@@ -105,7 +98,7 @@ query getUsers{
     name
   }
 }
-`
+`;
 
 const GET_GAMES = gql`
 query getGames{
@@ -115,14 +108,14 @@ query getGames{
     subGenre
   }
 }
-`
+`;
 
 const ADD_SCORE = gql`
 mutation AddScore($gameType : ScoregameTypeGameType!, $group : ScoregroupIdGroup!, $points : Int!, $userId : ID!){
   createScore(gameType : $gameType, groupId : $group, points : $points, userIdId : $userId){
     id
   }
-}`
+}`;
 
 export default compose(
     graphql(GET_GAMES, {name:'getGames'}),

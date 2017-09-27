@@ -1,58 +1,78 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { GC_USER_ID, GC_AUTH_TOKEN } from '../constants'
 import { gql, graphql, compose } from 'react-apollo'
 
-class LoginPage extends Component {
+class LoginPage extends React.Component {
 
-    state = {
-        login: true, // switch between Login and SignUp
-        email: '',
-        password: '',
-        name: ''
+    constructor(props) {
+        super(props);
+        this.state = {
+            login: true, // switch between Login and SignUp
+            email: '',
+            password: '',
+            name: ''
+        };
+        console.log(this.state);
     }
-
         //Inline IF logic   
         //See for more details: https://facebook.github.io/react/docs/conditional-rendering.html#inline-if-with-logical--operator
     
     render() {
         return (
-            <div className="pageHeader">
-                <h4>{this.state.login ? 'Login' : 'Sign Up'}</h4>
+            <div>
+                <div className="loginTop">
+                    <div className={this.state.login ? 'loginSelected' : 'loginUnselected'}
+                         onClick={() => this.setState({ login: true })}
+                    >Login</div>
+                    <div className={!this.state.login ? 'loginSelected' : 'loginUnselected'}
+                         onClick={() => this.setState({ login: false })}
+                    >Sign up</div>
+                </div>
+
                 <div  className="loginArea">
-                    {!this.state.login && 
-                        <input className="nameArea"
+
+                    <div className="loginSection">
+                        Email :
+                        <input
+                            className="coolTextBox"
+                            value={this.state.email}
+                            onChange={(e) => this.setState({ email: e.target.value })}
+                            type='text'
+                            placeholder='Your email address'
+                        />
+                    </div>
+                    <div className="loginSection">
+                        Password :
+                        <input
+                            className="coolTextBox"
+                            value={this.state.password}
+                            onChange={(e) => this.setState({ password: e.target.value })}
+                            type='password'
+                            placeholder='Choose a safe password'
+                        />
+                    </div>
+                    {!this.state.login &&
+                    <div className="loginSection">
+                        User name:
+                        <input
+                            className="coolTextBox"
                             value={this.state.name}
                             onChange={(e) => this.setState({ name: e.target.value })}
                             type='text'
                             placeholder='Your name'
                         />
+                    </div>
                     }
-                            Email
-                    <input className="emailArea"
-                        value={this.state.email}
-                        onChange={(e) => this.setState({ email: e.target.value })}
-                        type='text'
-                        placeholder='Your email address'
-                    />
-                            Password
-                    <input className="passwordArea"
-                        value={this.state.password}
-                        onChange={(e) => this.setState({ password: e.target.value })}
-                        type='password'
-                        placeholder='Choose a safe password'
-                    />
-                </div>
-                <div>
-                    <button className="login_create"
-                        onClick={() => this._confirm()}
-                    >
-                        {this.state.login ? 'login' : 'create account' }
-                    </button>
-                    <button className="accountBtn"
-                        onClick={() => this.setState({ login: !this.state.login })}
-                    >
-                    {this.state.login ? 'Need to create an account?' : 'already have an account?'}
-                    </button>
+                    <div className="loginSection forgotPassword">
+                        <button className="loginButton"
+                            onClick={() => this._saveUserData("1", "1")}
+                        >
+                            {this.state.login ? 'Login' : 'Create an account' }
+                        </button>
+                        {this.state.login &&
+                        <a href="http://lmgtfy.com/?q=What+is+my+password%3F" className="loginSection">Forgot your password?</a>
+                        }
+                    </div>
                 </div>
             </div>
         )
@@ -88,6 +108,7 @@ class LoginPage extends Component {
     _saveUserData = (id, token) => {
         localStorage.setItem(GC_USER_ID, id)
         localStorage.setItem(GC_AUTH_TOKEN, token)
+        this.props.history.push(`/`)
     }
 
 }
