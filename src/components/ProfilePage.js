@@ -45,9 +45,8 @@ class ProfilePage extends React.Component {
 
     render() {
         const userInfoQuery = this.props.data;
-        console.log(userInfoQuery);
 
-        if (userInfoQuery && userInfoQuery .loading) {
+        if (userInfoQuery && userInfoQuery.loading) {
             return <div>Loading...</div>
         }
 
