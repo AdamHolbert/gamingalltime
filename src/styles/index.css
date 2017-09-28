@@ -1,5 +1,5 @@
 body {
-    background-color: darkgray;
+    background-color: #32a6c4;
     font-family: 'Work Sans', sans-serif;
     margin: 0px;
 }
@@ -10,28 +10,54 @@ header {
     /*background-color: darkcyan;*/
 }
 
+
+.loginComponent {
+    color: #222;
+    background-color: #72bbce;
+    align-self: center;
+    width: 34%;
+    margin-left: 33%;
+    margin-top: 30px;
+    border: 2px solid #222;
+}
+
+@media only screen and (max-width: 500px) {
+    .loginComponent {
+        width: 100%;
+        margin-left: 0px;
+        margin-top: 30px;
+    }
+}
+
 .loginTop {
-    width: auto;
     height: 40px;
     text-align: center;
     font-size: xx-large;
     display: flex;
     align-items: stretch;
-    background-color: red;
     justify-content: space-between;
+    background-color: #222;
 }
 
 .loginSelected {
-    background-color: darkgray;
+    background-color: #72bbce;
+    border-radius:20px 20px 0px 0px;
     width: 50%;
-    border: 2px solid black;
-    border-bottom: none;
 }
 
 .loginUnselected {
-    background-color: lightgray;
+    background-color: #32a6c4;
+    border-radius:20px 20px 0px 0px;
     width: 50%;
-    border: 2px solid black;
+    border-bottom: 2px solid #222;
+}
+
+.LBorder {
+    border-left: 2px solid #222;
+}
+
+.RBorder {
+    border-right: 2px solid #222;
 }
 
 .loginArea {
@@ -41,7 +67,7 @@ header {
 }
 
 .loginSection {
-    width: 50%;
+    width: 70%;
     margin: 10px;
     align-self: center;
     display: flex;

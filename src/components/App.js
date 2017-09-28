@@ -33,6 +33,7 @@ class App extends Component {
             <div>
                 <Header userId={userId}/>
                 <Switch>
+                    <Route exact path='/profile' component={ProfilePage}/>
                     <Route exact path='/' component={HomePage}/>
                     <Route path='/' component={UnknownPage}/>
                 </Switch>

@@ -19,12 +19,12 @@ class LoginPage extends React.Component {
     
     render() {
         return (
-            <div>
+            <div className="loginComponent">
                 <div className="loginTop">
-                    <div className={this.state.login ? 'loginSelected' : 'loginUnselected'}
+                    <div className={this.state.login ? 'loginSelected' : 'loginUnselected RBorder'}
                          onClick={() => this.setState({ login: true })}
                     >Login</div>
-                    <div className={!this.state.login ? 'loginSelected' : 'loginUnselected'}
+                    <div className={!this.state.login ? 'loginSelected' : 'loginUnselected LBorder'}
                          onClick={() => this.setState({ login: false })}
                     >Sign up</div>
                 </div>
@@ -65,7 +65,7 @@ class LoginPage extends React.Component {
                     }
                     <div className="loginSection forgotPassword">
                         <button className="loginButton"
-                            onClick={() => this._saveUserData("1", "1")}
+                            onClick={() => this._confirm()}
                         >
                             {this.state.login ? 'Login' : 'Create an account' }
                         </button>
@@ -108,7 +108,6 @@ class LoginPage extends React.Component {
     _saveUserData = (id, token) => {
         localStorage.setItem(GC_USER_ID, id)
         localStorage.setItem(GC_AUTH_TOKEN, token)
-        this.props.history.push(`/`)
     }
 
 }

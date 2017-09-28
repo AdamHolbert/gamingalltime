@@ -7,10 +7,19 @@ class HomePage extends React.Component {
     
     render(){
         return(
-            <div>
+            <div className="">
+                <div className="addContainer">
 
+                </div>
+                <div className="dataContainer">
+                    <div className="groupSection">
+
+                    </div>
+                    <div className="friendSection">
+
+                    </div>
+                </div>
             </div>
-
         )
     }
 }
